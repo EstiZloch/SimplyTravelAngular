@@ -1,0 +1,57 @@
+<body class="gradient">
+  <div class="frm" id=frm>
+    <form novalidate  (submit)="SignUp(frm)" #frm="ngForm">
+      <div class="input">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="תעודת זהות"  name="IdCustomer" [(ngModel)]="newCustomer.IdCustomer" type="text" #IdCustomer="ngModel" required maxlength="30">
+        </mat-form-field>
+        <span class="error" *ngIf="IdCustomer.errors!=null && IdCustomer.errors.required && IdCustomer.touched">שדה חובה</span>  
+      </div>
+  
+       <div  class="input"> 
+             <mat-form-field class="example-full-width">
+              <input matInput placeholder="שם משתמש" name="userName" [(ngModel)]="newCustomer.NameCustomer" type="text" #userName="ngModel" required ngbTooltip="שם משתמש חייב להכיל לפחות 5 תוים" triggers="click:blur"  tooltipClass="tooltip" minlength="5"  maxlength="20">
+            </mat-form-field>
+            <span class="error" *ngIf="userName.errors!=null && userName.errors.required && userName.touched">שדה חובה</span>
+            </div>
+       <div  class="input">
+                <mat-form-field class="example-full-width">
+                  <input matInput  placeholder="מייל"  name="email" [(ngModel)]="newCustomer.Email" type="email" #email="ngModel" email required>
+                </mat-form-field>
+                <span class="error" *ngIf="email.errors!=null && email.errors.required && email.touched">שדה חובה</span>
+                <span class="error" *ngIf="email.errors!=null && email.errors.email && email.touched"> פורמט שגוי</span>
+     
+              </div>
+        
+        <div class="example-container input">  
+          <mat-form-field class="example-full-width">
+            <input ngbTooltip="סיסמא חייבת להכיל לפחות 5 תוים" triggers="click:blur"  tooltipClass="tooltip" matInput placeholder="סיסמא"name="password" [(ngModel)]="newCustomer.PasswordCustomer" type="password" #password="ngModel" required [type]="hide ? 'text' : 'password'" minlength="5" maxlength="12">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+          </mat-form-field>        
+            <span class="error" *ngIf="password.errors!=null && password.errors.required && password.touched">שדה חובה</span>
+          </div>
+  <!-- 
+        <div class="example-container input">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="אימות סיסמא" name="passwordTrue" [(ngModel)]="confirmPass"  #passwordTrue="ngModel" required [type]="hide ? 'text' : 'password'">
+            <button mat-icon-button matSuffix (click)="hide =!hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <span class="error" *ngIf="passwordTrue.errors!=null && passwordTrue.errors.required && passwordTrue.touched">שדה חובה</span>
+          <span class="error" *ngIf="passwordTrue.value!=newCompany.password && passwordTrue.touched">הסיסמאות לא זהות</span>
+          <span class="error" *ngIf="required validateEqual=password && passwordTrue.touched">הסיסמאות לא זהות</span>
+   
+        </div> -->
+      <div class="btnfrm">
+      <mat-chip-list aria-label="Fish selection" >
+        <button mat-button type="submit" [disabled]="!frm.valid"  class="btnOK" selected>רשום אותי</button>
+        </mat-chip-list>
+
+        </div>
+  
+        </form>
+  </div>
+  </body>

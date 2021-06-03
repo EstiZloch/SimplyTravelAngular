@@ -1,0 +1,17 @@
+img{
+    width: 50%;
+}
+  
+  #loginBtn{
+      background-color:#00ffff;
+  }
+  #frm{
+      max-height: 250px;
+      border: black 1px solid;
+      top:10vh;
+      border-radius: 15%;
+      width: 270px;
+  }
+  form{
+    margin-top: 25px;
+  }
