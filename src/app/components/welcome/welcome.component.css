@@ -1,20 +1,26 @@
 img{
-    display: inline-block;
-    max-width: 60%;
+    flex: 5;
+    max-width: 50%;
+    max-height: 20%;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 70px;
     }
     .image{
       text-align: center;
-      width: 65%;
-      margin: auto;  
-     
+      padding-top: 0px;
+      width: 100%;
+      display: flex; 
+      flex-direction: row;
     }
-    #logIn,#signUp{
-      width: 65%;
-      height: auto;
-      
+    .start{
+      padding-top: 25%;
+      min-height: 100px;
+      min-width: 100px;
+      flex: 1;
+      display: inline-table;
+      min-width: 500px;
     }
-    .btns{
-        text-align: center;
-        width:40vh;
-        margin: auto; 
-    }
+    .welcome{
+      flex: 1;
+          }

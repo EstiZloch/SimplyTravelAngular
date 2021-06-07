@@ -1,0 +1,50 @@
+.form-steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
+    flex:3;
+
+}
+
+.step-bubble {
+    padding: 8px;
+    /* border: 3px solid darkgreen; */
+    width: 12px;
+    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: green; 
+    font-size: 1em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.step-divider {
+    height: 0.5px;
+     background: green; 
+    flex: 1;
+    margin: 0px 10px;
+}
+
+.step-current, .step-complete {
+    background: green;
+    color: white;
+}
+#logo{
+margin-right: 150px;
+  margin-top: 10px;
+  margin-left: 0px;
+  }
+.step-incomplete {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    max-height: 100px;
+    font-family: 'Ariel', cursive;
+}

@@ -25,14 +25,20 @@ import { SignupComponent } from './components/signup/signup.component';
 import { Route } from '@angular/compiler/src/core';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-
+import {MatInputModule} from '@angular/material/input';
+import { FormPageComponent } from './components/form-page/form-page.component';
+import { StepsComponent } from './components/steps/steps.component';
+import { StepTemplateComponent } from './components/step-template/step-template.component';
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     SignupComponent,
     ForgetPasswordComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FormPageComponent,
+    StepsComponent,
+    StepTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     MatTabsModule,
     ChartsModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [   CustomerService,
     TripService,
