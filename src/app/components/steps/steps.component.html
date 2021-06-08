@@ -1,31 +1,31 @@
 <div class="top">
-<div class="form-steps-container">
-    <ng-container>
-        <div
+<div class="form-steps-container" >
+    <ng-container >
+        <div [ngClass]="{ 'step-complete': steps[0].isComplete, 'step-incomplete': !steps[0].isComplete, 'step-current': (currentStep | async)?.stepIndex === steps[0].stepIndex}"
             class="step-bubble">-1-</div>
             <div>בוחרים קריטריונים</div>
         <div class="step-divider"></div>
     </ng-container>
     <ng-container>
-        <div
+        <div  [ngClass]="{ 'step-complete': steps[1].isComplete, 'step-incomplete': !steps[1].isComplete, 'step-current': (currentStep | async)?.stepIndex === steps[1].stepIndex}"
             class="step-bubble">-2-</div>
             <div>נהנים מהחיפוש החכם שלנו</div>
         <div class="step-divider"></div>
     </ng-container>
     <ng-container>
-        <div
+        <div  [ngClass]="{ 'step-complete': steps[2].isComplete, 'step-incomplete': !steps[2].isComplete, 'step-current': (currentStep | async)?.stepIndex === steps[2].stepIndex}"
             class="step-bubble">-3-</div>
             <div>אופציות נוספות</div>
         <div class="step-divider"></div>
     </ng-container>
     <ng-container>
-        <div
+        <div  [ngClass]="{ 'step-complete': steps[3].isComplete, 'step-incomplete': !steps[3].isComplete, 'step-current': (currentStep | async)?.stepIndex === steps[3].stepIndex}"
              class="step-bubble">-4-</div>
             <div>יוצאים לדרך</div>
         <div class="step-divider"></div>
     </ng-container>
 </div>
 <div id="logo">
-<img  src="assets/logo.png"> 
+<img  src="assets/logoGood.png"> 
 </div>
 </div>

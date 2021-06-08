@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { StepModel } from '../models/step.model';
 
-const STEPS = [
+const STEPS: Array<StepModel> = [
   { stepIndex: 1, isComplete: false },
   { stepIndex: 2, isComplete: false },
   { stepIndex: 3, isComplete: false },
@@ -40,7 +40,12 @@ export class StepsService {
       this.currentStep$.next(this.steps$.value[index]);
     }
   }
+  setIsComplited(): void {
 
+this.steps$.subscribe( (stepsTemp) => {
+  stepsTemp[this.currentStep$.value.stepIndex].isComplete=true;
+ });
+  }
   isLastStep(): boolean {
     return this.currentStep$.value.stepIndex === this.steps$.value.length;
   }

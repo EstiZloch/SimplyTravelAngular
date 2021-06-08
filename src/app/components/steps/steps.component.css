@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    color: green; 
+    color:rgb(5, 45, 46); 
     font-size: 1em;
     cursor: pointer;
     user-select: none;
@@ -24,13 +24,13 @@
 
 .step-divider {
     height: 0.5px;
-     background: green; 
+     background: rgb(78, 122, 118); 
     flex: 1;
     margin: 0px 10px;
 }
 
 .step-current, .step-complete {
-    background: green;
+    background: rgb(1, 58, 59);
     color: white;
 }
 #logo{

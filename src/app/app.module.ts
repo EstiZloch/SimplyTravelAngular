@@ -28,7 +28,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import {MatInputModule} from '@angular/material/input';
 import { FormPageComponent } from './components/form-page/form-page.component';
 import { StepsComponent } from './components/steps/steps.component';
-import { StepTemplateComponent } from './components/step-template/step-template.component';
+import { StepsService } from 'src/shared/services/steps.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +37,7 @@ import { StepTemplateComponent } from './components/step-template/step-template.
     ForgetPasswordComponent,
     WelcomeComponent,
     FormPageComponent,
-    StepsComponent,
-    StepTemplateComponent
+    StepsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +61,9 @@ import { StepTemplateComponent } from './components/step-template/step-template.
     SiteKindService,
     SiteService,
     SubRegionService,
-    RegionService],
+    RegionService,
+    StepsService
+  ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
