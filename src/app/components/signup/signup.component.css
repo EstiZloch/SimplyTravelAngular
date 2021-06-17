@@ -1,0 +1,30 @@
+#signUpBtn{
+    background-color:#00ffff;
+ 
+    
+}
+
+.gradient{
+    background-image: linear-gradient(to right, #008bfb,#00ffff );
+  }
+ 
+  .example-full-width{
+    font-family: Stanga AAA;
+  }
+.btnOK{
+  top:-27px
+}
+  
+  #frm{
+    height: 410px;
+    top:1vh;
+    border-radius: 15%;
+    width: 350px;
+  }
+  img{
+    width: 35%;
+  }
+  form{
+   margin-top: -10px;
+   height: 350px;
+  }

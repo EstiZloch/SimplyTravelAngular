@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerService } from 'src/shared/services/customer.service';
@@ -12,11 +11,11 @@ import { SiteService } from 'src/shared/services/site.service';
 import { SubRegionService } from 'src/shared/services/sub-region.service';
 import { TripService } from 'src/shared/services/trip.service';
 import { SigninComponent } from './components/signin/signin.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
-//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -29,7 +28,31 @@ import {MatInputModule} from '@angular/material/input';
 import { FormPageComponent } from './components/form-page/form-page.component';
 import { StepsComponent } from './components/steps/steps.component';
 import { StepsService } from 'src/shared/services/steps.service';
+import { OptionsCustomerComponent } from './components/options-customer/options-customer.component';
+import { StartPageComponent } from './components/start-page/start-page.component';
+import { Plan1Component } from './components/plan1/plan1.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule }from '@angular/platform-browser';
+import { Router, RouterModule } from '@angular/router';
+import { MatFormField } from '@angular/material/form-field';
+
 @NgModule({
+  
+  imports: [
+    BrowserModule,
+FormsModule,
+CommonModule,
+AppRoutingModule,
+HttpClientModule,
+ReactiveFormsModule,
+MaterialModule,
+BrowserAnimationsModule,
+    NgxMaterialTimepickerModule,
+    NgbModule,
+    MatCheckboxModule,
+    MatTabsModule,
+    ChartsModule
+  ],
   declarations: [
     AppComponent,
     SigninComponent,
@@ -37,23 +60,13 @@ import { StepsService } from 'src/shared/services/steps.service';
     ForgetPasswordComponent,
     WelcomeComponent,
     FormPageComponent,
-    StepsComponent
+    StepsComponent,
+    OptionsCustomerComponent,
+    StartPageComponent,
+    Plan1Component
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    NgxMaterialTimepickerModule,
-   // NgbModule,
-    MatCheckboxModule,
-    MatTabsModule,
-    ChartsModule,
-    MaterialModule,
-    BrowserAnimationsModule,
-    MatInputModule
-  ],
-  providers: [   CustomerService,
+  providers: [   
+    CustomerService,
     TripService,
     ResponseService,
     ReminderService,

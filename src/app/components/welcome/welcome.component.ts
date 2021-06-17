@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StepModel } from '../../../shared/models/step.model';
 import { StepsService } from '../../../shared/services/steps.service';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class WelcomeComponent implements OnInit {
   currentStep: Observable<StepModel>;
   
   @Input() step: StepModel;
-  constructor(private router:Router,private stepsService: StepsService) { }
+  constructor(private router:Router,private route:ActivatedRoute,private stepsService: StepsService) { }
 
   ngOnInit(): void {
 
@@ -32,14 +32,17 @@ export class WelcomeComponent implements OnInit {
   }
 }
   onSubmit(): void {
-    this.router.navigate(['/complete']);
+    this.router.navigate(['complete'],{relativeTo:this.route});
   }
   LogIn(){
    // sessionStorage.setItem('enter','3')
-        this.router.navigate(['/LogIn']);
+        this.router.navigate(['LogIn'],{relativeTo:this.route});
       }
        SignUp(){
    // sessionStorage.setItem('enter','3')
-        this.router.navigate(['/SignUp']);
+        this.router.navigate(['SignUp'],{relativeTo:this.route});
        }
+       startPlanning() {
+        this.router.navigate(['Start'],{relativeTo:this.route});
+     }
 }
