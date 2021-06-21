@@ -1,0 +1,64 @@
+
+<app-input-map></app-input-map>
+<select  #selectType (change)="selectTypeSite(selectType.value)">
+<option value="1">קבר</option>
+<option value="2">מסעדה</option>
+<option value="3">בית קפה</option>
+<option value="4">אטרקציה רטובה</option>
+<option value="5">אטרקציה יבשה</option>
+<option value="6">מסלול רטוב</option>
+<option value="7">מסלול יבש</option>
+<option value="8">שמורת טבע</option>
+<option value="9">מוזאון</option>
+</select>
+<input value="שם האתר"  [(ngModel)]="newSite.nameSite">
+<label>אזור</label>
+ <select #select (change)="selectRegion(select.value)"> 
+     <option   *ngFor="let region of regions" > {{region.NameRegion}}</option>
+  </select>
+  <mat-label>תת אזור</mat-label>
+  <select multiple>
+      <option *ngFor="let sub of sub_regions">
+        {{sub.nameSub_Region}}
+       </option>
+  </select>  -->
+  <label>רמת אתגר</label>
+  <select #select > 
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+   </select>
+  <mat-radio-group >
+    <mat-radio-button value="1">חינם</mat-radio-button>
+    <mat-radio-button value="2">לא בחינם</mat-radio-button>
+  </mat-radio-group>
+  <mat-radio-group >
+    <mat-radio-button value="1">אפשרי לתחבורה ציבורית</mat-radio-button>
+    <mat-radio-button value="2">רק הגעה עצמית</mat-radio-button>
+  </mat-radio-group>
+
+  <!-- one file >
+   <div class="image-preview">
+    <strong>Preview:</strong>
+    <img  src={{file}} alt="" id="dorzki-preview">
+  </div> 
+  <div class="image-upload">
+    <form action="#" method="post" enctype="multipart/form-data">
+      <label for="dorzki-image">Upload Image:</label>
+      <input #pathfile  type="file" id="dorzki-image" name="dorzki-image" accept=".jpg,.jpeg,.png">
+      <button type="submit">Upload!</button>
+    </form>
+</div>
+< multy files >
+    <form method="post" enctype="multipart/form-data">
+        <div>
+          <label for="file">Choose file to upload</label>
+          <input type="file" id="file" name="file" multiple>
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
+       </form> -->
+
+
+  

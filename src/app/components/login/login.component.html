@@ -1,0 +1,33 @@
+<div class="main">
+
+  <mat-card style="height:  90%; width: 90%;" class="container-fluid d-flex h-90 flex-column main-card">
+      <div class="row flex-grow-1 align-items-stretch">
+
+          <div class="col-sm-6" style="padding: 15px; ">
+              <mat-tab-group mat-align-tabs="center">
+                  <div>
+                      <mat-tab label="התחבר">
+                          <br>
+                          <app-signin></app-signin>
+                      </mat-tab>
+                      <mat-tab label="הישאר אנונימי">
+                          <br>
+                          <b>שים לב:</b>
+                          <p> במצב אנונימי לא ישמרו תמונות, תזכורת ופרטים אישיים </p>
+                          <br>
+                          <button mat-flat-button color="primary" (click)="enterNoAuth()">המשך בכל זאת ללא הרשמה</button>
+                      </mat-tab>
+                  </div>
+              </mat-tab-group>
+
+          </div>
+          <div class="col-sm-6 align-items-stretch">
+              <img class="img"  [attr.src]="src$ | async" alt="Time to travel">
+
+          </div>
+      </div>
+  </mat-card>
+
+
+
+</div>

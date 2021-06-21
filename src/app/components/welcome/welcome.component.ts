@@ -45,4 +45,5 @@ export class WelcomeComponent implements OnInit {
        startPlanning() {
         this.router.navigate(['Start'],{relativeTo:this.route});
      }
+     
 }

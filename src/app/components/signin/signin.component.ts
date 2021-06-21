@@ -17,6 +17,8 @@ export class SigninComponent implements OnInit {
   newCustomer:Customer=new Customer();
   subscribe:any
   loginForm:FormGroup
+  forgetPassword: boolean=false;
+  new: boolean=false;
   constructor( private customer:CustomerService,
     private router:Router,
     ) { }
@@ -47,6 +49,13 @@ export class SigninComponent implements OnInit {
       else 
       console.log("בחר שם אחר שם משתמש זה כבר קיים במערכת")
       });
+  }
+  forgetPass()
+  {
+    this.forgetPassword=true
+  }
+  newCustomerClick(){
+this.new=true;
   }
   }
 

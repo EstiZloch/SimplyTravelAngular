@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerService } from 'src/shared/services/customer.service';
@@ -33,8 +32,13 @@ import { StartPageComponent } from './components/start-page/start-page.component
 import { Plan1Component } from './components/plan1/plan1.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule }from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MatFormField } from '@angular/material/form-field';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { InputMapComponent } from './components/input-map/input-map.component';
+import { AddSiteComponent } from './components/add-site/add-site.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   
@@ -51,19 +55,22 @@ BrowserAnimationsModule,
     NgbModule,
     MatCheckboxModule,
     MatTabsModule,
-    ChartsModule
+    ChartsModule,
+    GooglePlaceModule
   ],
   declarations: [
     AppComponent,
     SigninComponent,
-    SignupComponent,
+    SignupComponent,LoginComponent,
     ForgetPasswordComponent,
     WelcomeComponent,
     FormPageComponent,
     StepsComponent,
     OptionsCustomerComponent,
     StartPageComponent,
-    Plan1Component
+    Plan1Component,
+    InputMapComponent,
+    AddSiteComponent
   ],
   providers: [   
     CustomerService,

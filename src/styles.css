@@ -131,3 +131,19 @@ bottom: -50px;
  
   font-family: Stanga AAA;
 }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    direction: rtl !important;
+    text-align: center;
+}
+
+*:not(.mat-icon) {
+    font-family: 'Calibri', 'Gill Sans', 'Open Sans', Geneva, Helvetica, Arial, sans-serif !important;
+    font-size: 16px
+}
