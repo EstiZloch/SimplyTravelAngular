@@ -1,0 +1,4 @@
+<mat-label>:הסטורית הטיולים שלי</mat-label>
+<hr>
+<button *ngFor="let trip of trips" (click)="onClick($event)">{{trip}}<hr></button><hr>
+

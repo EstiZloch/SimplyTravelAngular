@@ -7,14 +7,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SiteService {
-
-  url='https://localhost:44371/api/customers/'
+  url='https://localhost:44371/api/sites/'
   constructor(private http:HttpClient){
 }
-  SignUp(site:Site):Observable<any>
+
+  AddSite(site:Site):Observable<any>
 {
 let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
 headers.append("Access-Control-Allow-Origin", "*")
 return this.http.post<number>(`${this.url}signUp`,site);
 }
+GetMin(code:number):Observable<number> {
+  return this.http.get<number>(`${this.url}getMin/${code}`)
+    }
+    GetMax(code:number):Observable<number> {
+      return this.http.get<number>(`${this.url}getMax/${code}`)
+        }
+        GetMisLiter(code:number):Observable<number> {
+          return this.http.get<number>(`${this.url}getMis/${code}`)
+            }
+            GetSpendTime(code:number):Observable<number> {
+              return this.http.get<number>(`${this.url}getTime/${code}`)
+                }
+
+
 }

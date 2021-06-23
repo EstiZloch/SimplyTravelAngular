@@ -1,0 +1,13 @@
+
+<form novalidate #frm="ngForm">
+    <mat-label>הטיול</mat-label>
+    <hr>
+    <hr>
+    <span *ngFor="let site of sites" (click)="onClick($event)">
+    {{site}}<img class="welcime" src="assets/line.png"><hr> 
+    </span>
+     </form>
+     <hr>
+     <hr>
+     <hr>
+<span>לתגובה שלך לטיול זה</span>>

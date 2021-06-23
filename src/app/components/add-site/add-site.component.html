@@ -1,6 +1,13 @@
+<form novalidate (submit)="AddSite(frm)" #frm="ngForm">
+  <div class="container">
+    <input ngx-google-places-autocomplete =
+    'options'  (onAddressChange)="AddressChange($event)"/>
+ 
+   </div>
 
-<app-input-map></app-input-map>
-<select  #selectType (change)="selectTypeSite(selectType.value)">
+<mat-label>סוג</mat-label>
+<select #selectType (change)="selectTypeSite(selectType.value)">
+  
 <option value="1">קבר</option>
 <option value="2">מסעדה</option>
 <option value="3">בית קפה</option>
@@ -11,32 +18,57 @@
 <option value="8">שמורת טבע</option>
 <option value="9">מוזאון</option>
 </select>
-<input value="שם האתר"  [(ngModel)]="newSite.nameSite">
+
+<mat-label>שם אתר</mat-label>
+<input  [(ngModel)]="newSite.nameSite" name="nameSite">
+
 <label>אזור</label>
  <select #select (change)="selectRegion(select.value)"> 
-     <option   *ngFor="let region of regions" > {{region.NameRegion}}</option>
+     <option   *ngFor="let region of regions"> {{region.NameRegion}}</option>
   </select>
+
   <mat-label>תת אזור</mat-label>
-  <select multiple>
-      <option *ngFor="let sub of sub_regions">
+  <select  #selectSubRegion (change)="SubRegion(selectSubRegion.value)">
+      <option  *ngFor="let sub of sub_regions" value={{sub.CodeSub_Region}}>
         {{sub.nameSub_Region}}
        </option>
-  </select>  -->
+  </select> 
+
   <label>רמת אתגר</label>
-  <select #select > 
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
+  <select #selectExtra (change)="Extra(selectExtra.value)"> 
+    <option value="1">קל</option>
+    <option value="1">בינוני</option>
+    <option value="1">מאתגר</option>
    </select>
-  <mat-radio-group >
-    <mat-radio-button value="1">חינם</mat-radio-button>
-    <mat-radio-button value="2">לא בחינם</mat-radio-button>
+
+ <mat-radio-group>
+    <mat-radio-button #free value="0" (change)="Free_NotFree(free.value)">חינם</mat-radio-button>
+    <mat-radio-button #notfree value="1" (change)="Free_NotFree(notfree.value)">לא בחינם</mat-radio-button>
   </mat-radio-group>
-  <mat-radio-group >
-    <mat-radio-button value="1">אפשרי לתחבורה ציבורית</mat-radio-button>
-    <mat-radio-button value="2">רק הגעה עצמית</mat-radio-button>
+  <mat-radio-group>
+    <mat-radio-button #bus value="0" (change)="Car_Bus(free.value)">תחבורה ציבורית</mat-radio-button>
+    <mat-radio-button #car value="1" (change)="Car_Bus(notfree.value)" >הגעה עצמית</mat-radio-button>
   </mat-radio-group>
 
+  <button mat-flat-button color="primary" type="submit" [disabled]="!frm.valid" selected>הכנס</button>
+ 
+  
+<mat-label>גיל מינימלי</mat-label>
+<input  type="number" [(ngModel)]="newSite.minAge" name="minAge">
+
+
+<mat-label>גיל מקסימלי</mat-label>
+<input  type="number" [(ngModel)]="newSite.maxAge" name="maxAge">
+
+
+<mat-label>מספר ליטרים מים לנפש</mat-label>
+<input  type="number" [(ngModel)]="newSite.misLiterWater" name="MisLiter">
+
+
+<mat-label>זמן ממוצע לבילוי</mat-label>
+<input type="number" [(ngModel)]="newSite.timeSpend" name="avgSpendTime">
+
+</form>
   <!-- one file >
    <div class="image-preview">
     <strong>Preview:</strong>

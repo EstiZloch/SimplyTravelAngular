@@ -13,8 +13,6 @@ export class CustomerService {
 }
 SignIn(id:number, password:string):Observable<number>
 {
-  console.log(id);
-  console.log(password);
  return this.http.get<number>(`${this.url}signIn/${id}/${password}`)
 }
 SignUp(customer:Customer):Observable<any>

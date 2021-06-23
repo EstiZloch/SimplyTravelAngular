@@ -1,0 +1,35 @@
+<form novalidate #frm="ngForm">
+    <mat-label>פרטים נוספים </mat-label>
+    <hr>
+    <mat-label >תעודת זהות</mat-label>
+  <input readonly="true" name="nameCustomer">
+  <mat-label>שם</mat-label>
+  <input  name="nameCustomer">
+  <mat-label>מייל</mat-label>
+  <input  name="nameCustomer">
+  <mat-label>גיל מינימלי </mat-label>
+  <input  name="nameCustomer">
+  <mat-label>גיל מקסימלי</mat-label>
+  <input  name="nameCustomer">
+    <label>רמת אתגר</label>
+    <select #selectExtra > 
+      <option value="1">קל</option>
+      <option value="1">בינוני</option>
+      <option value="1">מאתגר</option>
+     </select>
+  
+   <mat-radio-group>
+      <mat-radio-button #free value="0" >חינם</mat-radio-button>
+      <mat-radio-button #notfree value="1" >לא בחינם</mat-radio-button>
+    </mat-radio-group>
+    <mat-radio-group>
+      <mat-radio-button #bus value="0" >תחבורה ציבורית</mat-radio-button>
+      <mat-radio-button #car value="1"  >הגעה עצמית</mat-radio-button>
+    </mat-radio-group>
+  
+    <button mat-flat-button color="primary" type="submit" [disabled]="!frm.valid" selected>הכנס/עדכן</button>
+   
+    
+  
+  
+  </form>

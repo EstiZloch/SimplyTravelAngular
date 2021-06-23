@@ -39,6 +39,13 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { InputMapComponent } from './components/input-map/input-map.component';
 import { AddSiteComponent } from './components/add-site/add-site.component';
 import { LoginComponent } from './components/login/login.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
+import { ResponsesComponent } from './components/responses/responses.component';
+import { RateComponent } from './components/rate/rate.component';
+import { TripsHistoryComponent } from './components/trips-history/trips-history.component';
+import { TripReviewComponent } from './components/trip-review/trip-review.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   
@@ -70,7 +77,14 @@ BrowserAnimationsModule,
     StartPageComponent,
     Plan1Component,
     InputMapComponent,
-    AddSiteComponent
+    AddSiteComponent,
+    ReminderComponent,
+    ResponsesComponent,
+    RateComponent,
+    TripsHistoryComponent,
+    TripReviewComponent,
+    CustomerDetailsComponent,
+    ChangePasswordComponent
   ],
   providers: [   
     CustomerService,

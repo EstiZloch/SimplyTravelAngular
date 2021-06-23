@@ -1,0 +1,25 @@
+<mat-label>הכנס את תגובתך לטיול:<mat-label>
+    <hr>
+<mat-label>האם הציון שהבאת השביע את רצונך?</mat-label>
+<ngb-rating [(rate)]="currentRate1" [max]="max"></ngb-rating>
+<hr>
+<pre>Rate: <b>{{currentRate1}}</b></pre>
+<mat-label>האם המזג אויר התאים לטיול?</mat-label>
+<ngb-rating [(rate)]="currentRate2" [max]="max"></ngb-rating>
+<hr>
+<pre>Rate: <b>{{currentRate2}}</b></pre>
+<mat-label>האם הטילו התאים לכל שכבות הגיל?</mat-label>
+<ngb-rating [(rate)]="currentRate3" [max]="max"></ngb-rating>
+<hr>
+<pre>Rate: <b>{{currentRate3}}</b></pre>
+<mat-label>האם תרצה לשוב על טיול זה שנית?</mat-label>
+<mat-radio-group>
+    <mat-radio-button #bus value="0" >כן</mat-radio-button>
+    <mat-radio-button #car value="1" >לא</mat-radio-button>
+  </mat-radio-group>
+  <hr>
+  <mat-label>רשמים נוספים:</mat-label>
+  <mat-form-field appearance="fill">
+    <mat-label></mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>

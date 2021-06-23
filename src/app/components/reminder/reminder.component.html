@@ -1,0 +1,5 @@
+<form novalidate #frm="ngForm">
+ <mat-label>תזכורות</mat-label>
+  <input *ngFor="let reminder of reminders" value="{{reminder}}" (keyup.enter)="onEnter($event)"><hr>
+  <input  value="הכנס תזכורת חדשה">
+  </form>
