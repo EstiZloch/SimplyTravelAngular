@@ -46,6 +46,7 @@ import { TripsHistoryComponent } from './components/trips-history/trips-history.
 import { TripReviewComponent } from './components/trip-review/trip-review.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { AllSitesComponent } from './components/all-sites/all-sites.component';
 
 @NgModule({
   
@@ -84,7 +85,8 @@ BrowserAnimationsModule,
     TripsHistoryComponent,
     TripReviewComponent,
     CustomerDetailsComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AllSitesComponent
   ],
   providers: [   
     CustomerService,

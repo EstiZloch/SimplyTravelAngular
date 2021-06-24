@@ -54,6 +54,7 @@ console.log(this.newSite.adress)
     this.newSite.free_notFree=true;
     else    
     this.newSite.free_notFree=false;
+    this.newSite.statusSite=true;
     this.siteService.AddSite(this.newSite).subscribe(nameSite=>{
      //לקבל את התעודת זהות שנכנס עכשיו ולשלוח אותו לאזור האישי 
      this.newSite.nameSite=nameSite; 

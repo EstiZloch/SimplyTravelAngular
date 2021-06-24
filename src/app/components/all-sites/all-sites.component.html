@@ -1,0 +1,55 @@
+<form class="example-form">
+
+<mat-label>האתרים:</mat-label>
+<hr>
+<table>
+<thead>
+    <tr>
+        <th>קוד האתר</th>
+        <th>שם האתר</th>
+        <th>סוג האתר</th>
+        <th>כתובת</th>
+        <th>אזור</th>
+        <th>תת אזור</th>
+        <th>רמת אתגר</th>
+        <th>גיל מינימלי</th>
+        <th>גיל מקסימלי</th>
+        <th>מספר ליטר מים לנפש</th>
+        <th>חינם/לא בחינם</th>
+        <th>הגעה עצמית/תחבורה ציבורית </th>
+        <th>זמן ממוצע לבילוי</th>
+        <th>פעיל/לא פעיל</th>
+        <th class="delete">שנה סטטוס</th>
+        <th class="update">עדכון</th>
+    </tr>
+</thead>
+<tbody>
+
+        <tr   *ngFor="let site of sites" >
+            <td>{{site.CodeSite}}</td>
+            <td>{{site.NameSite}}</td>
+            <td>{{site.NameSiteKind}}</td>
+            <td>{{site.Adress}}</td>
+            <td>{{site.NameRegion}}</td>
+            <td>{{site.NameSub_Region}}</td>
+            <td>{{site.ExtraLevel}}</td>
+            <td>{{site.MinAge}}</td>
+            <td>{{site.MaxAge}}</td>
+            <td>{{site.MisLiterWater}}</td>
+            <td>{{site.Free_notFree}}</td>
+            <td>{{site.Car_bus}}</td>
+            <td>{{site.TimeSpend}}</td>
+            <td>{{site.StatusSite}}</td>
+            <td class="deleteBtn" ><mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
+            </td>
+            <td class="updateBtn" ><mat-icon aria-hidden="false" aria-label="Example home icon">create</mat-icon></td>
+        </tr>
+</tbody>
+</table>
+
+
+
+
+<button mat-flat-button color="primary" >להוספת אתר</button>
+
+</form>

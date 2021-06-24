@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Site } from 'src/app/shared/models/Site.model';
+import { SiteDisplay } from '../models/SiteDisplay.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -29,6 +30,9 @@ GetMin(code:number):Observable<number> {
             GetSpendTime(code:number):Observable<number> {
               return this.http.get<number>(`${this.url}getTime/${code}`)
                 }
+                GetAllSites():Observable<SiteDisplay[]> {
+                  return this.http.get<SiteDisplay[]>(`${this.url}getAllSites`)
+                    }
 
 
 }

@@ -1,0 +1,30 @@
+table {
+    margin: 15px auto;
+    padding: 1.5px;
+    border-collapse: collapse;
+    direction: rtl;
+}
+#tableRes {
+    margin: 10px auto 10px;
+}
+#tableresult {
+    display: none;
+}
+td {
+    text-align: center;
+    border: 0.3px solid #320909;
+    font-size: 16px;
+}
+th {
+    text-align: center !important;
+    background: #df74a0;
+    color: white;
+    border: 0.3px solid #320909;
+}
+thead {
+    border: 0.3px solid #320909;
+}
+tr {
+    border: 0.3px solid #320909;
+    min-width: 15px;
+}
