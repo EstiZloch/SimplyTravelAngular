@@ -8,7 +8,7 @@ import { SubRegion } from '../models/SubRegion.model';
   providedIn: 'root'
 })
 export class SubRegionService {
-  url='https://localhost:44371/api/subRegions/'
+  url='https://localhost:44300/api/subRegions/'
   constructor(private http:HttpClient) { }
   GetSubRegions(region:string):Observable<SubRegion[]> {
     return this.http.get<SubRegion[]>(`${this.url}getSubRegions/${region}`);

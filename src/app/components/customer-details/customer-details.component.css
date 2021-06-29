@@ -1,0 +1,32 @@
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 14px;
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 10em 0 !important;
+    padding-bottom: 0.34375em !important;
+  }
+  
+  .box {
+    border: rgb(219, 219, 219);
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 14px !important;
+    text-align: start;
+    margin-top: 3px;
+    margin-left: 50px;
+  }
+  
+  .mat-slider-horizontal {
+    min-width: 180px !important;
+  }
+  
+  .mat-radio-button {
+    margin: 10px 5px 5px;
+  }
+  
+  .box>*.mat-icon {
+    margin: 8px ​8px 3px 6px;
+  }
+  

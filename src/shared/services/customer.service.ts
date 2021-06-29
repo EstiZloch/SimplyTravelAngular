@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CustomerService {
 
-   url='https://localhost:44371/api/customers/'
+   url='https://localhost:44300/api/customers/'
   constructor(private http:HttpClient){
 }
 SignIn(id:number, password:string):Observable<number>

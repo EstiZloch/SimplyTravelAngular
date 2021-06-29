@@ -18,6 +18,7 @@ export class AddSiteComponent implements OnInit {
   car_bus: string = '1';
   free_not: string = '1';
   season: string = '0';
+  favoriteSeason: string = '1';
   newSite:Site=new Site();
     options={
       componentRestrictions:{
@@ -31,7 +32,14 @@ export class AddSiteComponent implements OnInit {
     title = 'rou';
 
   constructor(private  siteService:SiteService,private router: Router,private region:RegionService,private sub:SubRegionService) { }
+  formatLabel(value: number) {
+    let lavels=['קל','בינוני','קשה']
+    if (value >= 1) {
+      return lavels[(value-1)]
+    }
 
+    return 'בחר רמה';
+  }
   public AddressChange(address: any) {
     //setting address from API to local variable
      this.newSite.adress=String(address.formatted_address);
@@ -43,7 +51,6 @@ console.log(this.newSite.adress)
      });
      this.newSite.statusSite=true;
   }
-  
   AddSite(frm:any){
     console.log(this.season)
     if(this.car_bus=="1")

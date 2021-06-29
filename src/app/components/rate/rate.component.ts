@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,7 @@ export class RateComponent implements OnInit {
   currentRate2 = 0;
   currentRate3 = 0;
   max:number=5;
+  @Input() tripName:string;
   constructor() { }
 
   ngOnInit(): void {

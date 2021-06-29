@@ -1,0 +1,14 @@
+.arrow {
+    vertical-align: -webkit-baseline-middle;
+    font-size: x-large;
+}
+
+.mat-raised-button:active {
+    background-color: rgb(135, 172, 149);
+    border-width: 4px;
+    border-color: cadetblue;
+}
+
+.field>* {
+    width: 100%;
+}

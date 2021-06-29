@@ -1,0 +1,24 @@
+.field>* {
+    width: 50%;
+}
+
+.mainRow {
+    text-align: -webkit-center;
+    margin-top: 5%;
+}
+
+.col>* {
+    width: 90%;
+}
+
+.hint {
+    font-size: small;
+}
+
+.mat-icon {
+    margin-left: 5px;
+}
+
+p {
+    margin: 0px !important;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Customer } from 'src/shared/models/Customer.model';
 import { Region } from 'src/shared/models/Region.model';
 import { SubRegion } from 'src/shared/models/SubRegion.model';
 import { RegionService } from 'src/shared/services/region.service';
@@ -14,6 +15,8 @@ import { SubRegionService } from 'src/shared/services/sub-region.service';
 export class Plan1Component implements OnInit {
   regions:Region[]=[]
   sub_regions:SubRegion[]=[]
+  newCustomer:Customer=new Customer()
+  favoriteSeason: string = '1';
   constructor(private region:RegionService,private sub:SubRegionService) { }
 
   ngOnInit(): void {
@@ -27,4 +30,15 @@ this.sub.GetSubRegions(region).subscribe(sub => {
   this.sub_regions = sub;
  });
   } 
+  SubRegion(value:string)
+  {
+console.log('feds')
+  } 
+  selectRegion(region:string)
+  {
+this.sub.GetSubRegions(region).subscribe(sub => {
+  this.sub_regions = sub;
+ });
+  } 
+
 }

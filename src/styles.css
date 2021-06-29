@@ -1,121 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'; 
-body{
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+body {
     font-family: Stanga AAA;
     /* font-family: Almoni DL AAA; */
     direction: rtl;
-   
 }
-html, body { height: 100%; }
 
-.image{
+html,
+body {
+    height: 100%;
+}
+
+.image {
     padding-top: 7vh;
     text-align: center;
-    margin: auto;  
-  }
+    margin: auto;
+}
 
-.toLate{
-    position:absolute;
+.toLate {
+    position: absolute;
     top: 100px;
     left: 0;
     width: 100%;
     height: 80%;
     float: left;
-    background-image: linear-gradient(to right, #008bfb,#00ffff );
+    background-image: linear-gradient(to right, #008bfb, #00ffff);
     z-index: 10;
     font-size: 50px;
     text-align: center;
-    }
+}
+
+
 /* דפי כניסה*/
-.btnOK{
-    background-color:#00ffff;
+
+.btnOK {
+    background-color: #00ffff;
     font-family: Stanga AAA;
     font-size: 20px;
 }
-.btnfrm{
-width: 25%;
-align-items: center;
-margin: auto;
-position: relative;
-left: -5%;
-bottom: -50px;
+
+.btnfrm {
+    width: 25%;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    left: -5%;
+    bottom: -50px;
 }
-.error{
+
+.error {
     color: #008bfb;
     font-family: Stanga AAA;
 }
-.example-full-width,.date{
+
+.example-full-width,
+.date {
     font-family: Stanga AAA;
- font-size:20px;
-  }
-  .gradient{
-    background-image: linear-gradient(to right, #008bfb,#00ffff );
-  }
-.frm{
-   
+    font-size: 20px;
+}
+
+.gradient {
+    background-image: linear-gradient(to right, #008bfb, #00ffff);
+}
+
+.frm {
     background-color: white;
-   
-    margin:auto;
+    margin: auto;
     padding: 2%;
     position: relative;
-    text-align: center;  
-  
-  }
-.input{
-   height: 70px;
-  }
- 
-.part{
+    text-align: center;
+}
+
+.input {
+    height: 70px;
+}
+
+.part {
     padding-top: 30px;
     border-width: 2px;
     border-radius: 15%;
-  /*  border-image: linear-gradient(to right, #008bfb,#00ffff );*/
-  border-color: #008bfb;
-   border-style: solid;
-   width: 350px;
-   margin-right: 15px;
-   height: 450px;
-   float: right;
-  }
-.vertical{
-      margin-top: 70px;
-      margin-right: 25px;
-      margin-left: 10px;
-      border-left: 3px solid #00ffff;
-      height:300px;
-      float: right;
+    /*  border-image: linear-gradient(to right, #008bfb,#00ffff );*/
+    border-color: #008bfb;
+    border-style: solid;
+    width: 350px;
+    margin-right: 15px;
+    height: 450px;
+    float: right;
+}
 
-  }
-.list{
-   
+.vertical {
+    margin-top: 70px;
+    margin-right: 25px;
+    margin-left: 10px;
+    border-left: 3px solid #00ffff;
+    height: 300px;
+    float: right;
+}
+
+.list {
     margin: auto;
     max-width: 200px;
     overflow-x: auto;
     /* overflow:hidden; */
-    overflow-y:auto;
+    overflow-y: auto;
     max-height: 200px;
     text-align: right;
-  }
+}
 
-.next{
-    right: 125px; 
-    
-    }
-.title{
-    font-size:  35px;
-     margin: auto;
-     text-align: center;
-   }
-   .span{
-    color:#008bfb;
+.next {
+    right: 125px;
+}
+
+.title {
+    font-size: 35px;
+    margin: auto;
+    text-align: center;
+}
+
+.span {
+    color: #008bfb;
     font-size: 20px;
     display: inline-block;
 }
-.upload{
+
+.upload {
     margin: auto;
     width: 250px;
     border-radius: 7.5px;
@@ -124,14 +142,19 @@ bottom: -50px;
     border-width: 1px;
     padding-bottom: 10px;
 }
-.up{
+
+.up {
     display: inline-block;
 }
-.tooltip{
- 
-  font-family: Stanga AAA;
+
+.tooltip {
+    font-family: Stanga AAA;
 }
 
+
+/* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 html,
 body {
     height: 100%;
@@ -146,4 +169,34 @@ body {
 *:not(.mat-icon) {
     font-family: 'Calibri', 'Gill Sans', 'Open Sans', Geneva, Helvetica, Arial, sans-serif !important;
     font-size: 16px
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+/* ------ */
+
+.mat-typography {
+    background-image: url('src/assets/background2.jpg');
+    background-size: cover;
+}
+
+.col>* {
+    width: 90%;
+}
+
+.field>* {
+    width: 70%;
+}
+
+.mainRow {
+    text-align: -webkit-center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.margin {
+    margin: 10px;
 }

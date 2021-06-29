@@ -1,0 +1,12 @@
+.star {
+    font-size: 1.8rem;
+    color: #b0c4de;
+}
+
+.filled {
+    color: #1e90ff;
+}
+
+.mat-button-toggle-checked {
+    background-color: rgb(142, 207, 142);
+}

@@ -1,25 +1,54 @@
-<mat-label>הכנס את תגובתך לטיול:<mat-label>
-    <hr>
-<mat-label>האם הציון שהבאת השביע את רצונך?</mat-label>
-<ngb-rating [(rate)]="currentRate1" [max]="max"></ngb-rating>
-<hr>
-<pre>Rate: <b>{{currentRate1}}</b></pre>
-<mat-label>האם המזג אויר התאים לטיול?</mat-label>
-<ngb-rating [(rate)]="currentRate2" [max]="max"></ngb-rating>
-<hr>
-<pre>Rate: <b>{{currentRate2}}</b></pre>
-<mat-label>האם הטילו התאים לכל שכבות הגיל?</mat-label>
-<ngb-rating [(rate)]="currentRate3" [max]="max"></ngb-rating>
-<hr>
-<pre>Rate: <b>{{currentRate3}}</b></pre>
-<mat-label>האם תרצה לשוב על טיול זה שנית?</mat-label>
-<mat-radio-group>
-    <mat-radio-button #bus value="0" >כן</mat-radio-button>
-    <mat-radio-button #car value="1" >לא</mat-radio-button>
-  </mat-radio-group>
-  <hr>
-  <mat-label>רשמים נוספים:</mat-label>
-  <mat-form-field appearance="fill">
-    <mat-label></mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
+<!-- <div class="container-fluid back">
+    <div class="row mainRow">
+        <mat-card style="width: 80% ;">
+            <div class="container-fluid"> -->
+
+                <div class="row">
+                    <h1 style=" text-align: center;">הכנס את תגובתך לטיול: {{tripName}}</h1>
+                
+                    <mat-divider></mat-divider>
+                
+                </div>
+                <div class="row">
+                    <br>
+                    <h2> &nbsp;האם הציוד שהבאת השביע את רצונך? &nbsp;</h2>
+                    <ngb-rating [(rate)]="currentRate1" [max]="max">
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                    <hr>
+                    <!-- <pre>Rate: <b>{{currentRate1}}</b></pre> -->
+                    <h2> &nbsp;האם המזג אויר התאים לטיול? &nbsp;</h2>
+                    <ngb-rating [(rate)]="currentRate2" [max]="max">
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                    <hr>
+                    <!-- <pre>Rate: <b>{{currentRate2}}</b></pre> -->
+                    <h2> &nbsp;האם הטיול התאים לכל שכבות הגיל? &nbsp;</h2>
+                    <ngb-rating [(rate)]="currentRate3" [max]="max">
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                    <hr>
+                    <!-- <pre>Rate: <b>{{currentRate3}}</b></pre> -->
+                    <h2>האם תרצה לשוב על טיול זה שנית?</h2>
+                    <mat-button-toggle-group>
+                        <mat-button-toggle value="1">כן</mat-button-toggle>
+                        <mat-button-toggle value="0">לא</mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <hr>
+                    <h2>רשמים נוספים:</h2>
+                    <div>
+                        <mat-form-field appearance="outline" style="width:90%;">
+                            <textarea matInput></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!-- </div>
+                        </mat-card>
+                    </div>
+                </div> -->

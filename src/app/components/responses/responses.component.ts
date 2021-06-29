@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class ResponsesComponent implements OnInit {
   responses:string[]=["נחל שורק",
   'כינרת תשע"ט'];
-  constructor() { }
-
+  tripName:string
   ngOnInit(): void {
   }
-  onClick(event:any) { console.log(event.target) }
+  onClick(res:any) {
+    this.tripName=res;
+     console.log(res)
+   }
 }

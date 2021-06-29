@@ -5,20 +5,7 @@
 <table>
 <thead>
     <tr>
-        <th>קוד האתר</th>
-        <th>שם האתר</th>
-        <th>סוג האתר</th>
-        <th>כתובת</th>
-        <th>אזור</th>
-        <th>תת אזור</th>
-        <th>רמת אתגר</th>
-        <th>גיל מינימלי</th>
-        <th>גיל מקסימלי</th>
-        <th>מספר ליטר מים לנפש</th>
-        <th>חינם/לא בחינם</th>
-        <th>הגעה עצמית/תחבורה ציבורית </th>
-        <th>זמן ממוצע לבילוי</th>
-        <th>פעיל/לא פעיל</th>
+<th *ngFor="let header of headers">{{header}}</th>
         <th class="delete">שנה סטטוס</th>
         <th class="update">עדכון</th>
     </tr>

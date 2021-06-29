@@ -1,2 +1,34 @@
-    <mat-label>התגובות שלי:</mat-label>
-     <button *ngFor="let response of responses" (click)="onClick($event)">{{response}}</button><hr>
+<div class="container-fluid back">
+    <div class="row mainRow">
+        <mat-card style="width: 100% ;">
+            <div class="container-fluid">
+                <!-- <div class="row">
+               
+            </div> -->
+                <div class="row">
+                    <h1 style=" text-align: start;">התגובות שלי:</h1>
+
+                    <mat-divider></mat-divider>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-7" style="border-right: 1px solid rgb(102, 190, 146);">
+                        <app-rate *ngIf="tripName" [tripName]="tripName"></app-rate>
+                    </div>
+                    <div class="col-sm-5 ">
+                        <div class="row  margin" *ngFor="let response of responses">
+                            <div class="col-sm-3 field" style="text-align: end">
+                                <mat-icon class="arrow" *ngIf="tripName==response">west</mat-icon>
+                            </div>
+                            <div class="col-sm-8 field"> <button mat-raised-button (click)="onClick(response)">{{response}}</button></div>
+                            <div class="col-sm-1 field"> </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

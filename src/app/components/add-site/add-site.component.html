@@ -1,96 +1,161 @@
-<form novalidate (submit)="AddSite(frm)" #frm="ngForm">
-  <div class="container">
-    <input ngx-google-places-autocomplete =
-    'options'  (onAddressChange)="AddressChange($event)"/>
+<div class="container-fluid back">
+  <div class="row mainRow">
+      <mat-card style="width: 80% ;">
+          <div class="container-fluid">
+              <!-- <div class="row">
+                 
+              </div> -->
+              <div class="row">
+                  <h1 style=" text-align: start;">הזן פרטי אתר</h1>
+
+                  <mat-divider></mat-divider>
+
+              </div> <br>
+              <div class="row">
+                  <div style="max-width: 30%;" class="col-sm-6">
+                      <div class="box">
+                          <mat-label>כתובת אתר</mat-label>
+                          <app-input-map></app-input-map>
+                      </div>
+                      <div class="box">
+                          <label>רמת אתגר</label>
+                          <mat-slider color="primary" thumbLabel name="extra" [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="3" value="1" aria-label="units"></mat-slider>
  
-   </div>
+                      </div>
 
-<mat-label>סוג</mat-label>
-<select #selectType (change)="selectTypeSite(selectType.value)">
-  
-<option value="1">קבר</option>
-<option value="2">מסעדה</option>
-<option value="3">בית קפה</option>
-<option value="4">אטרקציה רטובה</option>
-<option value="5">אטרקציה יבשה</option>
-<option value="6">מסלול רטוב</option>
-<option value="7">מסלול יבש</option>
-<option value="8">שמורת טבע</option>
-<option value="9">מוזאון</option>
-</select>
+                      <div class="box">
+                          <mat-radio-group>
+                              <mat-radio-button value="1">בתשלום</mat-radio-button>
+                              <mat-radio-button value="0">ללא תשלום </mat-radio-button>
+                          </mat-radio-group>
+                      </div>
 
-<mat-label>שם אתר</mat-label>
-<input  [(ngModel)]="newSite.nameSite" name="nameSite">
+                      <div class="box">
+                          <mat-radio-group>
+                              <mat-radio-button value="0" [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
+                              <mat-radio-button value="1" [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
+                          </mat-radio-group>
+                      </div>
+                  </div>
+                  <div style="max-width: 30%;" class="col-sm-6">
+                      <div class="field">
+                          <mat-form-field appearance="outline">
 
-<label>אזור</label>
- <select #select (change)="selectRegion(select.value)"> 
-     <option   *ngFor="let region of regions"> {{region.NameRegion}}</option>
-  </select>
+                              <mat-label>סוג</mat-label>
+                              <mat-select #selectType (change)="selectTypeSite(selectType.value)">
 
-  <mat-label>תת אזור</mat-label>
-  <select  #selectSubRegion (change)="SubRegion(selectSubRegion.value)">
-      <option  *ngFor="let sub of sub_regions" value={{sub.CodeSub_Region}}>
-        {{sub.nameSub_Region}}
-       </option>
-  </select> 
+                                  <mat-option value="1">קבר</mat-option>
+                                  <mat-option value="2">מסעדה</mat-option>
+                                  <mat-option value="3">בית קפה</mat-option>
+                                  <mat-option value="4">אטרקציה רטובה</mat-option>
+                                  <mat-option value="5">אטרקציה יבשה</mat-option>
+                                  <mat-option value="6">מסלול רטוב</mat-option>
+                                  <mat-option value="7">מסלול יבש</mat-option>
+                                  <mat-option value="8">שמורת טבע</mat-option>
+                                  <mat-option value="9">מוזאון</mat-option>
+                              </mat-select>
+                              <mat-icon matSuffix>rowing</mat-icon>
 
-  <label>רמת אתגר</label>
-  <select #selectExtra (change)="Extra(selectExtra.value)"> 
-    <option value="1">קל</option>
-    <option value="1">בינוני</option>
-    <option value="1">מאתגר</option>
-   </select>
+                          </mat-form-field>
 
- <mat-radio-group>
-    <mat-radio-button #free value="0" (change)="Free_NotFree(free.value)">חינם</mat-radio-button>
-    <mat-radio-button #notfree value="1" (change)="Free_NotFree(notfree.value)">לא בחינם</mat-radio-button>
-  </mat-radio-group>
-  <mat-radio-group>
-    <mat-radio-button #bus value="0" (change)="Car_Bus(free.value)">תחבורה ציבורית</mat-radio-button>
-    <mat-radio-button #car value="1" (change)="Car_Bus(notfree.value)" >הגעה עצמית</mat-radio-button>
-  </mat-radio-group>
+                      </div>
+                      <div class="field">
+                          <mat-form-field appearance="outline">
+                              <mat-label>שם אתר</mat-label>
+                              <input matInput [(ngModel)]="newSite.nameSite" name="name">
+                              <mat-icon matSuffix>deck </mat-icon>
 
-  <button mat-flat-button color="primary" type="submit" [disabled]="!frm.valid" selected>הכנס</button>
- 
-  
-<mat-label>גיל מינימלי</mat-label>
-<input  type="number" [(ngModel)]="newSite.minAge" name="minAge">
+                          </mat-form-field>
+                      </div>
+                      <div class="field">
+                          <mat-form-field appearance="outline">
+                              <mat-label>אזור</mat-label>
+                              <mat-select #select (change)="selectRegion(select.value)">
+                                  <mat-option *ngFor="let region of regions"> {{region.NameRegion}}</mat-option>
+                              </mat-select>
+                              <mat-icon matSuffix>travel_explore </mat-icon>
+                          </mat-form-field>
+                      </div>
+                      <div class="field">
+                          <mat-form-field appearance="outline">
+                              <mat-label>תת אזור</mat-label>
+                              <mat-select #selectSubRegion (change)="SubRegion(selectSubRegion.value)">
+                                  <mat-option *ngFor="let sub of sub_regions" value={{sub.CodeSub_Region}}>
+                                      {{sub.nameSub_Region}}
+                                  </mat-option>
+                              </mat-select>
+                              <mat-icon matSuffix>emoji_transportation</mat-icon>
 
+                          </mat-form-field>
+                      </div>
+   
+                  </div>
+                  <div style="max-width: 30%;" class="col-sm-6">
+                  <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>גיל מינימלי</mat-label>
+                        <input matInput [(ngModel)]="newSite.nameSite" name="minAge">
+                        <mat-icon matSuffix>child_care </mat-icon>
 
-<mat-label>גיל מקסימלי</mat-label>
-<input  type="number" [(ngModel)]="newSite.maxAge" name="maxAge">
+                    </mat-form-field>
+                </div>
+                <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>גיל מקסימלי</mat-label>
+                        <input matInput [(ngModel)]="newSite.nameSite" name="maxAge">
+                        <mat-icon matSuffix>elderly </mat-icon>
 
+                    </mat-form-field>
+                </div>
+                <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>ליטר מים לנפש</mat-label>
+                        <input matInput [(ngModel)]="newSite.nameSite"  name="MisLiter">
+                        <mat-icon matSuffix>wine_bar </mat-icon>
 
-<mat-label>מספר ליטרים מים לנפש</mat-label>
-<input  type="number" [(ngModel)]="newSite.misLiterWater" name="MisLiter">
+                    </mat-form-field>
+                </div>
+                <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>מספר שעות ממוצע לבילוי</mat-label>
+                        <input matInput [(ngModel)]="newSite.nameSite" name="avgSpendTime">
+                        <mat-icon matSuffix>access_time </mat-icon>
 
+                    </mat-form-field>
+                </div>
+            </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-5"></div>
+              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary">הכנס</button></div>
+              <div class="col-sm-5"></div>
 
-<mat-label>זמן ממוצע לבילוי</mat-label>
-<input type="number" [(ngModel)]="newSite.timeSpend" name="avgSpendTime">
-
-</form>
-  <!-- one file >
-   <div class="image-preview">
-    <strong>Preview:</strong>
-    <img  src={{file}} alt="" id="dorzki-preview">
-  </div> 
-  <div class="image-upload">
-    <form action="#" method="post" enctype="multipart/form-data">
-      <label for="dorzki-image">Upload Image:</label>
-      <input #pathfile  type="file" id="dorzki-image" name="dorzki-image" accept=".jpg,.jpeg,.png">
-      <button type="submit">Upload!</button>
-    </form>
+          </div>
+          <!-- one file >
+ <div class="image-preview">
+  <strong>Preview:</strong>
+  <img  src={{file}} alt="" id="dorzki-preview">
+</div> 
+<div class="image-upload">
+  <form action="#" method="post" enctype="multipart/form-data">
+    <label for="dorzki-image">Upload Image:</label>
+    <input #pathfile  type="file" id="dorzki-image" name="dorzki-image" accept=".jpg,.jpeg,.png">
+    <button type="submit">Upload!</button>
+  </form>
 </div>
 < multy files >
-    <form method="post" enctype="multipart/form-data">
-        <div>
-          <label for="file">Choose file to upload</label>
-          <input type="file" id="file" name="file" multiple>
-        </div>
-        <div>
-          <button>Submit</button>
-        </div>
-       </form> -->
+  <form method="post" enctype="multipart/form-data">
+      <div>
+        <label for="file">Choose file to upload</label>
+        <input type="file" id="file" name="file" multiple>
+      </div>
+      <div>
+        <button>Submit</button>
+      </div>
+     </form> -->
 
-
+      </mat-card>
+  </div>
+</div>
   

@@ -1,35 +1,143 @@
-<form novalidate #frm="ngForm">
+<div class="container-fluid back">
+  <div class="row mainRow">
+      <mat-card style="width: 80% ;">
+          <div class="container-fluid">
+              <!-- <div class="row">
+                 
+              </div> -->
+              <div class="row">
+                  <h1 style=" text-align: start;">פרטים נוספים</h1>
+
+                  <mat-divider></mat-divider>
+
+              </div> <br>
+              <div class="row">
+                  <div style="margin-top:100px" class="col-sm-6">
+    
+                      <div class="box">
+                          <label>רמת אתגר</label>
+                          <mat-slider color="primary" thumbLabel name="extra" [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="3" value="1" aria-label="units"></mat-slider>
+   
+                      </div>
+
+                      <div class="box">
+                          <mat-radio-group>
+                              <mat-radio-button name="notFree" value="1">בתשלום</mat-radio-button>
+                              <mat-radio-button name="free" value="0">ללא תשלום </mat-radio-button>
+                          </mat-radio-group>
+                      </div>
+
+                      <div class="box">
+                          <mat-radio-group>
+                              <mat-radio-button name="carC" ngDefaultControl value="0" [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
+                              <mat-radio-button name="busC" ngDefaultControl value="1" [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
+                          </mat-radio-group>
+                      </div>
+   
+                  </div>
+                  <div class="col-sm-6">
+ 
+                      <div class="field">
+                          <mat-form-field appearance="outline">
+                              <mat-label>תעודת זהות</mat-label>
+                              <input value="025547787" matInput readonly [(ngModel)]="newCustomer.IdCustomer" name="idC">
+                              <mat-icon matSuffix>perm_identity </mat-icon>
+
+                          </mat-form-field>
+                      </div>
+                      <div class="field">
+                        <mat-form-field appearance="outline">
+                            <mat-label>שם</mat-label>
+                            <input matInput [(ngModel)]="newCustomer.NameCustomer" name="nameC">
+                            <mat-icon matSuffix>face </mat-icon>
+
+                        </mat-form-field>
+                    </div>
+                    <div class="field">
+                      <mat-form-field appearance="outline">
+                          <mat-label>מייל</mat-label>
+                          <input matInput [(ngModel)]="newCustomer.Email" name="mailC">
+                          <mat-icon matSuffix>email </mat-icon>
+
+                      </mat-form-field>
+                  </div>
+                  <div class="field">
+                    <mat-form-field appearance="outline">
+                        <mat-label>גיל מינימלי</mat-label>
+                        <input matInput  [(ngModel)]="newCustomer.MinAge" name="maxC">
+                        <mat-icon matSuffix>child_care </mat-icon>
+
+                    </mat-form-field>
+                </div>
+                <div class="field">
+                  <mat-form-field appearance="outline">
+                      <mat-label>גיל מקסימלי</mat-label>
+                      <input matInput  [(ngModel)]="newCustomer.MaxAge" name="minC">
+                      <mat-icon matSuffix>elderly </mat-icon>
+
+                  </mat-form-field>
+                   </div>
+
+                  </div>
+
+
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-5"></div>
+              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary">הכנס</button></div>
+              <div class="col-sm-5"></div>
+
+          </div>
+
+ 
+
+      </mat-card>
+  </div>
+</div>
+  
+
+
+
+
+
+
+
+<!-- ----------------- -->
+<!-- <form novalidate #frm="ngForm">
     <mat-label>פרטים נוספים </mat-label>
-    <hr>
-    <mat-label >תעודת זהות</mat-label>
-  <input readonly="true" name="nameCustomer">
+    <hr> -->
+    <!-- <mat-label >תעודת זהות</mat-label>
+  <input readonly="true" name="idCustomer">
   <mat-label>שם</mat-label>
-  <input  name="nameCustomer">
-  <mat-label>מייל</mat-label>
-  <input  name="nameCustomer">
-  <mat-label>גיל מינימלי </mat-label>
+  <input  name="nameCustomer"> -->
+  <!-- <mat-label>מייל</mat-label>
+  <input  name="nameCustomer"> -->
+  <!-- <mat-label>גיל מינימלי </mat-label>
   <input  name="nameCustomer">
   <mat-label>גיל מקסימלי</mat-label>
-  <input  name="nameCustomer">
-    <label>רמת אתגר</label>
+  <input  name="nameCustomer"> -->
+    <!-- <label>רמת אתגר</label>
     <select #selectExtra > 
       <option value="1">קל</option>
       <option value="1">בינוני</option>
       <option value="1">מאתגר</option>
-     </select>
+     </select> -->
   
-   <mat-radio-group>
+   <!-- <mat-radio-group>
       <mat-radio-button #free value="0" >חינם</mat-radio-button>
       <mat-radio-button #notfree value="1" >לא בחינם</mat-radio-button>
     </mat-radio-group>
     <mat-radio-group>
       <mat-radio-button #bus value="0" >תחבורה ציבורית</mat-radio-button>
       <mat-radio-button #car value="1"  >הגעה עצמית</mat-radio-button>
-    </mat-radio-group>
+    </mat-radio-group> -->
   
-    <button mat-flat-button color="primary" type="submit" [disabled]="!frm.valid" selected>הכנס/עדכן</button>
+    <!-- <button mat-flat-button color="primary" type="submit" [disabled]="!frm.valid" selected>הכנס/עדכן</button>
    
     
   
   
-  </form>
+  </form> -->
+
+  
