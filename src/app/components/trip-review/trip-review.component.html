@@ -1,13 +1,44 @@
+<div *ngIf="DisplayName" class="container-fluid back">
+    <div class="row">
+        <div *ngIf="show" #alert class="alert alert-success" role="alert">
+            <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Great!!!</strong>  הטיול הוסף בהצלחה! לחזרה לרשימת הטיולים <button type="button" class="btnInAlert" (click)="comeBack()">לחץ כאן</button>
+          </div>
+        <h1 style=" text-align: center;">הכנס שם לטיול</h1>
+        <div class="field">
+            <mat-form-field appearance="outline">
+                <input matInput [(ngModel)]="name" name="nameTrip">
+                <mat-icon matSuffix>deck </mat-icon>
 
-<form novalidate #frm="ngForm">
-    <mat-label>הטיול</mat-label>
-    <hr>
-    <hr>
-    <span *ngFor="let site of sites" (click)="onClick($event)">
-    {{site}}<img class="welcime" src="assets/line.png"><hr> 
-    </span>
-     </form>
-     <hr>
-     <hr>
-     <hr>
-<span>לתגובה שלך לטיול זה</span>>
+            </mat-form-field>
+          </div>
+         <button (click)="AddFavoriteWithName()" [disabled]="enableOneTime" ><mat-icon color="warn">favorite_border</mat-icon>&nbsp;להוספה לרשימת הטיולים שלך</button>
+    </div>
+ 
+</div>
+<div *ngIf="!DisplayName" class="container-fluid back">
+    <div class="row">
+        <h1 style=" text-align: center;">פירוט הטיול:</h1>
+    </div>
+
+    
+    <div  class="row">
+
+        <mat-stepper>
+             <mat-step *ngFor="let site of sites[index-1]">
+                <ng-template style="display: block;" matStepLabel>{{site}}</ng-template>
+                <button  type="button" class="btnInStep" (click)="DisplayTripDetail()">לפרטי האתרים</button>
+            </mat-step> 
+          
+        </mat-stepper>
+       
+    </div>
+    <div class="row">
+
+        <div class="col-sm-3"><button *ngIf="idCus!=-1"  [disabled]="favoriteEnable" (click)="AddFavorite()"mat-button style="text-align: end;" ><mat-icon color="warn">favorite_border</mat-icon>&nbsp;להוספה לרשימת הטיולים שלך</button></div>
+        <div class="col-sm-9"></div>
+
+    </div>
+</div>
