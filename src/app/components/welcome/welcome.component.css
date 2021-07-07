@@ -1,29 +1,52 @@
-img{
-    flex: 5;
-    max-width: 800px;
-    max-height: 300px;
-    margin-top: 0px;
-    margin-left: 10px;
-    margin-right: 70px;
-    }
-    .right{
-      color: rgb(1, 65, 70);
-    }
-    .image{
-      text-align: center;
-      padding-top: 0px;
-      width: 100%;
-      display: flex; 
-      flex-direction: row;
-    }
-    .start{
-      padding-top: 15%;
-      min-height: 100px;
-      min-width: 100px;
-      flex: 1;
-      display: inline-table;
-      min-width: 500px;
-    }
-    .welcome{
-      flex: 1;
-          }
+.img {
+  height: 25px;
+}
+
+.header {
+  background-color: white;
+}
+
+.ButtonImg {
+  width: 100%;
+  border-top-right-radius: 4px;
+}
+
+.buttonCard {
+  padding: 0px;
+  text-align: center;
+  border: #9cc3ef;
+  border-width: medium;
+  border-radius: 6px;
+  border-style: solid;
+  background-color: rgb(132 153 138/50%);
+  /* background-image: url('./../../../assets/button.jpg'); */
+  height: 135px;
+  width: 230px;
+  margin-top: 20px;
+}
+
+.icon {
+  font-size: xx-large;
+  color: white;
+}
+
+.mat-button-wrapper {
+  font-size: x-large;
+}
+
+.field>* {
+  width: 100%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0px;
+}
+
+.planButton {
+  margin: 70px 0px;
+  height: 230px;
+  width: 550px;
+  background-image: url('./../../../assets/startPlanning2.png');
+  background-size: contain;
+}

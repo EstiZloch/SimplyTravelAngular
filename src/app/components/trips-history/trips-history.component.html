@@ -1,4 +1,32 @@
-<mat-label>:הסטורית הטיולים שלי</mat-label>
-<hr>
-<button *ngFor="let trip of trips" (click)="onClick($event)">{{trip}}<hr></button><hr>
+<div class="container-fluid back">
+    <div class="row mainRow">
+        <mat-card style="width: 100% ;">
+            <div class="container-fluid">
+     
+                <div class="row">
+                    <h1 style=" text-align: start;margin-right:45px">-תוצאות החיפוש-</h1>
 
+                    <mat-divider></mat-divider>
+
+                </div>
+                <br>
+                <div class="row" >
+                    
+   
+                    <div class="col-sm-8">
+                        <app-trip-review *ngIf="tripName" [tripName]="tripName"></app-trip-review>
+                    </div>
+                    <div class="col-sm-4" style="border-left: 1px solid rgb(102, 190, 146)">
+                        <div class="row  margin" *ngFor="let trip of trips">
+                            <div class="col-sm-3 field" style="text-align: end">
+                                <mat-icon class="arrow" *ngIf="tripName==trip[1]">west</mat-icon>
+                            </div>
+                            <div class="col-sm-8 field"> <button style="margin-right: -45px;" mat-raised-button (click)="onClick(trip[1],trip[0])">{{trip[1]}}</button></div>
+                            <div class="col-sm-1 field"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

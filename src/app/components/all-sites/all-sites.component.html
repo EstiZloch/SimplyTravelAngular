@@ -1,42 +1,116 @@
-<form class="example-form">
-
-<mat-label>האתרים:</mat-label>
-<hr>
-<table>
-<thead>
-    <tr>
-<th *ngFor="let header of headers">{{header}}</th>
-        <th class="delete">שנה סטטוס</th>
-        <th class="update">עדכון</th>
-    </tr>
-</thead>
-<tbody>
-
-        <tr   *ngFor="let site of sites" >
-            <td>{{site.CodeSite}}</td>
-            <td>{{site.NameSite}}</td>
-            <td>{{site.NameSiteKind}}</td>
-            <td>{{site.Adress}}</td>
-            <td>{{site.NameRegion}}</td>
-            <td>{{site.NameSub_Region}}</td>
-            <td>{{site.ExtraLevel}}</td>
-            <td>{{site.MinAge}}</td>
-            <td>{{site.MaxAge}}</td>
-            <td>{{site.MisLiterWater}}</td>
-            <td>{{site.Free_notFree}}</td>
-            <td>{{site.Car_bus}}</td>
-            <td>{{site.TimeSpend}}</td>
-            <td>{{site.StatusSite}}</td>
-            <td class="deleteBtn" ><mat-icon aria-hidden="false" aria-label="Example home icon">close</mat-icon>
-            </td>
-            <td class="updateBtn" ><mat-icon aria-hidden="false" aria-label="Example home icon">create</mat-icon></td>
-        </tr>
-</tbody>
-</table>
+<div class="container-fluid back">
+    <div class="row mainRow">
+        <mat-card style="width: 95% ;">
+            <div class="container-fluid">
+    
+                <div class="row">
+                    <h1 style=" text-align: right; display :inline; min-width: 700px;">האתרים</h1>
+                    <button  style=" margin-right: 900px; margin-bottom: 10px;" mat-flat-button color="primary" >להוספת אתר</button>
+                    <mat-divider></mat-divider>
+  
+                </div> <br>
 
 
 
 
-<button mat-flat-button color="primary" >להוספת אתר</button>
+<table mat-table [dataSource]="dataSource">
 
-</form>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <!-- <ng-container matColumnDef="קוד האתר">
+      <th mat-header-cell *matHeaderCellDef>קוד האתר</th>
+      <td mat-cell *matCellDef="let element"> {{element.CodeSite}} </td>
+    </ng-container> -->
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="שם האתר">
+      <th mat-header-cell *matHeaderCellDef> שם האתר </th>
+      <td mat-cell *matCellDef="let element"> {{element.NameSite}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="סוג האתר">
+      <th mat-header-cell *matHeaderCellDef> סוג האתר </th>
+      <td mat-cell *matCellDef="let element"> {{element.NameSiteKind}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="כתובת">
+      <th mat-header-cell *matHeaderCellDef> כתובת </th>
+      <td mat-cell *matCellDef="let element"> {{element.Adress}} </td>
+    </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="אזור">
+            <th mat-header-cell *matHeaderCellDef> אזור </th>
+            <td mat-cell *matCellDef="let element"> {{element.NameRegion}} </td>
+          </ng-container>
+              <!-- Symbol Column -->
+    <ng-container matColumnDef="תת אזור">
+        <th mat-header-cell *matHeaderCellDef> תת אזור </th>
+        <td mat-cell *matCellDef="let element"> {{element.NameSub_Region}} </td>
+      </ng-container>
+          <!-- Symbol Column -->
+    <ng-container matColumnDef="רמת אתגר">
+        <th mat-header-cell *matHeaderCellDef> רמת אתגר </th>
+        <td mat-cell *matCellDef="let element"> {{element.ExtraLevel}} </td>
+      </ng-container>
+          <!-- Symbol Column -->
+    <ng-container matColumnDef="גיל מינימלי">
+        <th mat-header-cell *matHeaderCellDef> גיל מינימלי </th>
+        <td mat-cell *matCellDef="let element"> {{element.MinAge}} </td>
+      </ng-container>
+                <!-- Symbol Column -->
+    <ng-container matColumnDef="גיל מקסימלי">
+        <th mat-header-cell *matHeaderCellDef> גיל מקסימלי </th>
+        <td mat-cell *matCellDef="let element"> {{element.MaxAge}} </td>
+      </ng-container>
+      <ng-container matColumnDef="מספר ליטר מים לנפש">
+        <th mat-header-cell *matHeaderCellDef> מספר ליטר מים לנפש  </th>
+        <td mat-cell *matCellDef="let element"> {{element.MisLiterWater}} </td>
+      </ng-container>
+          <!-- Symbol Column -->
+    <ng-container matColumnDef="חינם/לא בחינם">
+        <th mat-header-cell *matHeaderCellDef> חינם/לא בחינם</th>
+        <td mat-cell *matCellDef="let element"> {{element.Free_notFree}} </td>
+      </ng-container>
+                <!-- Symbol Column -->
+    <ng-container matColumnDef="הגעה עצמית/תחבורה ציבורית">
+        <th mat-header-cell *matHeaderCellDef> הגעה עצמית/תחבורה ציבורית  </th>
+        <td mat-cell *matCellDef="let element"> {{element.Car_bus}} </td>
+      </ng-container>
+      <ng-container matColumnDef="זמן ממוצע לבילוי">
+        <th mat-header-cell *matHeaderCellDef>זמן ממוצע לבילוי </th>
+        <td mat-cell *matCellDef="let element"> {{element.TimeSpend}} </td>
+      </ng-container>
+      <ng-container matColumnDef="פעיל/לא פעיל">
+        <th mat-header-cell *matHeaderCellDef> פעיל/לא פעיל </th>
+        <td mat-cell *matCellDef="let element"> {{element.StatusSite}} </td>
+      </ng-container>
+      <ng-container matColumnDef="שנה סטטוס">
+        <th mat-header-cell *matHeaderCellDef>שנה סטטוס</th>
+        <td mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="לחץ כדי לשנות סטטוס" >
+            <mat-icon color="primary" >cancel</mat-icon>
+           </button></td>
+      </ng-container>
+      <ng-container matColumnDef="ערוך">
+        <th mat-header-cell *matHeaderCellDef>ערוך</th>
+        <td mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="לחץ כדי לערוך את האתר" >
+            <mat-icon color="primary" >edit</mat-icon>
+           </button></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    
+  </table>
+  <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+
+
+
+</div>
+</mat-card>
+</div>
+</div>

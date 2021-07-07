@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/shared/models/Customer.model';
+import { Customer } from 'src/shared/models/Customer.model';
 
 @Component({
   selector: 'app-customer-details',
@@ -10,6 +10,7 @@ export class CustomerDetailsComponent implements OnInit {
 newCustomer:Customer=new Customer();
 season: string = '0';
 favoriteSeason: string = '1';
+idCustomer:string=''
   constructor() { }
 
   ngOnInit(): void {

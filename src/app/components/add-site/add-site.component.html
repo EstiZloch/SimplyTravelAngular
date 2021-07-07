@@ -2,9 +2,7 @@
   <div class="row mainRow">
       <mat-card style="width: 80% ;">
           <div class="container-fluid">
-              <!-- <div class="row">
-                 
-              </div> -->
+    
               <div class="row">
                   <h1 style=" text-align: start;">הזן פרטי אתר</h1>
 
@@ -15,41 +13,76 @@
                   <div style="max-width: 30%;" class="col-sm-6">
                       <div class="box">
                           <mat-label>כתובת אתר</mat-label>
-                          <app-input-map></app-input-map>
+                          <input ngx-google-places-autocomplete =
+                          'options'  (onAddressChange)="AddressChange($event)"/>
                       </div>
                       <div class="box">
                           <label>רמת אתגר</label>
-                          <mat-slider color="primary" thumbLabel name="extra" [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="3" value="1" aria-label="units"></mat-slider>
+                          <mat-slider color="primary" thumbLabel #extra [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="3" value="0" aria-label="units" (change)="Extra(extra.value)"></mat-slider>
  
                       </div>
 
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button value="1">בתשלום</mat-radio-button>
+                              <mat-radio-button #not_free value="1">בתשלום</mat-radio-button>
                               <mat-radio-button value="0">ללא תשלום </mat-radio-button>
                           </mat-radio-group>
                       </div>
 
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button value="0" [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
-                              <mat-radio-button value="1" [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
+                              <mat-radio-button value="0" name="busSite" ngDefaultControl [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
+                              <mat-radio-button value="1" name="carSite" ngDefaultControl [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
                           </mat-radio-group>
                       </div>
                   </div>
+                  <div style="max-width: 30%;" class="col-sm-6">
+                    <div class="field">
+                      <mat-form-field appearance="outline">
+                          <mat-label>גיל מינימלי</mat-label>
+                          <input matInput [(ngModel)]="newSite.MinAge" name="minAge">
+                          <mat-icon matSuffix>child_care </mat-icon>
+  
+                      </mat-form-field>
+                  </div>
+                  <div class="field">
+                      <mat-form-field appearance="outline">
+                          <mat-label>גיל מקסימלי</mat-label>
+                          <input matInput [(ngModel)]="newSite.MaxAge" name="maxAge">
+                          <mat-icon matSuffix>elderly </mat-icon>
+  
+                      </mat-form-field>
+                  </div>
+                  <div class="field">
+                      <mat-form-field appearance="outline">
+                          <mat-label>ליטר מים לנפש</mat-label>
+                          <input matInput [(ngModel)]="newSite.MisLiterWater"  name="MisLiter">
+                          <mat-icon matSuffix>wine_bar </mat-icon>
+  
+                      </mat-form-field>
+                  </div>
+                  <div class="field">
+                      <mat-form-field appearance="outline">
+                          <mat-label>מספר שעות לבילוי</mat-label>
+                          <input matInput [(ngModel)]="newSite.TimeSpend" name="avgSpendTime">
+                          <mat-icon matSuffix>access_time </mat-icon>
+  
+                      </mat-form-field>
+                  </div>
+              </div>
                   <div style="max-width: 30%;" class="col-sm-6">
                       <div class="field">
                           <mat-form-field appearance="outline">
 
                               <mat-label>סוג</mat-label>
-                              <mat-select #selectType (change)="selectTypeSite(selectType.value)">
+                              <mat-select #selectType (selectionChange)="selectTypeSite(selectType.value)">
 
                                   <mat-option value="1">קבר</mat-option>
-                                  <mat-option value="2">מסעדה</mat-option>
                                   <mat-option value="3">בית קפה</mat-option>
                                   <mat-option value="4">אטרקציה רטובה</mat-option>
                                   <mat-option value="5">אטרקציה יבשה</mat-option>
                                   <mat-option value="6">מסלול רטוב</mat-option>
+                                  <mat-option value="2">מסעדה</mat-option>
                                   <mat-option value="7">מסלול יבש</mat-option>
                                   <mat-option value="8">שמורת טבע</mat-option>
                                   <mat-option value="9">מוזאון</mat-option>
@@ -62,7 +95,7 @@
                       <div class="field">
                           <mat-form-field appearance="outline">
                               <mat-label>שם אתר</mat-label>
-                              <input matInput [(ngModel)]="newSite.nameSite" name="name">
+                              <input matInput [(ngModel)]="newSite.NameSite" name="name">
                               <mat-icon matSuffix>deck </mat-icon>
 
                           </mat-form-field>
@@ -70,8 +103,8 @@
                       <div class="field">
                           <mat-form-field appearance="outline">
                               <mat-label>אזור</mat-label>
-                              <mat-select #select (change)="selectRegion(select.value)">
-                                  <mat-option *ngFor="let region of regions"> {{region.NameRegion}}</mat-option>
+                              <mat-select #select (selectionChange)="selectRegionType(select.value)">
+                                  <mat-option *ngFor="let region of regions" value="{{region.NameRegion}}"> {{region.NameRegion}}</mat-option>
                               </mat-select>
                               <mat-icon matSuffix>travel_explore </mat-icon>
                           </mat-form-field>
@@ -79,7 +112,7 @@
                       <div class="field">
                           <mat-form-field appearance="outline">
                               <mat-label>תת אזור</mat-label>
-                              <mat-select #selectSubRegion (change)="SubRegion(selectSubRegion.value)">
+                              <mat-select #selectSub (selectionChange)="selectSubRegion(selectSub.value)">
                                   <mat-option *ngFor="let sub of sub_regions" value={{sub.CodeSub_Region}}>
                                       {{sub.nameSub_Region}}
                                   </mat-option>
@@ -90,45 +123,12 @@
                       </div>
    
                   </div>
-                  <div style="max-width: 30%;" class="col-sm-6">
-                  <div class="field">
-                    <mat-form-field appearance="outline">
-                        <mat-label>גיל מינימלי</mat-label>
-                        <input matInput [(ngModel)]="newSite.nameSite" name="minAge">
-                        <mat-icon matSuffix>child_care </mat-icon>
 
-                    </mat-form-field>
-                </div>
-                <div class="field">
-                    <mat-form-field appearance="outline">
-                        <mat-label>גיל מקסימלי</mat-label>
-                        <input matInput [(ngModel)]="newSite.nameSite" name="maxAge">
-                        <mat-icon matSuffix>elderly </mat-icon>
-
-                    </mat-form-field>
-                </div>
-                <div class="field">
-                    <mat-form-field appearance="outline">
-                        <mat-label>ליטר מים לנפש</mat-label>
-                        <input matInput [(ngModel)]="newSite.nameSite"  name="MisLiter">
-                        <mat-icon matSuffix>wine_bar </mat-icon>
-
-                    </mat-form-field>
-                </div>
-                <div class="field">
-                    <mat-form-field appearance="outline">
-                        <mat-label>מספר שעות ממוצע לבילוי</mat-label>
-                        <input matInput [(ngModel)]="newSite.nameSite" name="avgSpendTime">
-                        <mat-icon matSuffix>access_time </mat-icon>
-
-                    </mat-form-field>
-                </div>
-            </div>
               </div>
           </div>
           <div class="row">
               <div class="col-sm-5"></div>
-              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary">הכנס</button></div>
+              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary" (click)="AddSite()">הוסף</button></div>
               <div class="col-sm-5"></div>
 
           </div>

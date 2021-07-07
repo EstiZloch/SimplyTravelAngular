@@ -48,6 +48,7 @@ import { CustomerDetailsComponent } from './components/customer-details/customer
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { AllSitesComponent } from './components/all-sites/all-sites.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   
@@ -88,7 +89,8 @@ BrowserAnimationsModule,
     CustomerDetailsComponent,
     ChangePasswordComponent,
     AllSitesComponent,
-    HeaderComponent
+    HeaderComponent,
+    AlertComponent
   ],
   providers: [   
     CustomerService,

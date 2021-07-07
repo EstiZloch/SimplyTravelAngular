@@ -27,4 +27,8 @@ let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
 headers.append("Access-Control-Allow-Origin", "*")
 return this.http.post<number>(`${this.url}ConfirmPassword`,customer);
 }
+GetDetails(id:number):Observable<Customer>
+{
+ return this.http.get<Customer>(`${this.url}getDetails/${id}`)
+}
 }

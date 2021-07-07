@@ -19,6 +19,7 @@ export class StepsComponent implements OnInit {
 ];*/
 steps: StepModel[];
 currentStep: Observable<StepModel>;
+  current: number;
 
   constructor(private service:StepsService) { 
     this.service.getSteps().subscribe( (stepsTemp) => {
@@ -27,6 +28,8 @@ currentStep: Observable<StepModel>;
     console.log(this.steps)
    });
    this.currentStep = this.service.getCurrentStep();
+   this.currentStep.pipe(map(p=>this.current=p.stepIndex))
+   this.current=1
   }
 
   ngOnInit(): void {

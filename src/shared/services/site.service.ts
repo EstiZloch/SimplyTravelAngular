@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Site } from 'src/app/shared/models/Site.model';
 import { SiteDisplay } from '../models/SiteDisplay.model';
 import { Observable } from 'rxjs';
+import { Site } from '../models/Site.model';
+import { ResultsService } from './results.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SiteService {
+
   url='https://localhost:44300/api/sites/'
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient,private result:ResultsService){
 }
 
   AddSite(site:Site):Observable<any>
@@ -32,6 +34,9 @@ GetMin(code:number):Observable<number> {
                 }
                 GetAllSites():Observable<SiteDisplay[]> {
                   return this.http.get<SiteDisplay[]>(`${this.url}getAllSites`)
+                    }
+                    Plan(code: number, min: number, max: number, address: string, half: boolean, carOrBus: boolean):Observable<string[][]> {
+                      return this.http.get<string[][]>(`${this.url}plan/${code}/${min}/${max}/${address}/${half}/${carOrBus}/${this.result.GetId()}`)
                     }
 
 

@@ -1,50 +1,17 @@
-.form-steps-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0px;
-    flex:3;
-
+img {
+    width: 225px;
 }
 
-.step-bubble {
-    padding: 8px;
-    /* border: 3px solid darkgreen; */
-    width: 12px;
-    height: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:rgb(5, 45, 46); 
-    font-size: 1em;
-    cursor: pointer;
-    user-select: none;
+.container {
+    background-color: rgb(255, 255, 255, 0.5);
+    padding: 0px;
+    margin: 0px;
+    width: 300px;
+    position: absolute;
+    bottom: 0px;
+    top: 65px;
 }
 
-.step-divider {
-    height: 0.5px;
-     background: rgb(78, 122, 118); 
-    flex: 1;
-    margin: 0px 10px;
-}
-
-.step-current, .step-complete {
-    background: rgb(1, 58, 59);
-    color: white;
-}
-#logo{
-margin-right: 150px;
-  margin-top: 10px;
-  margin-left: 0px;
-  }
-.step-incomplete {
-    cursor: not-allowed;
-    pointer-events: none;
-}
-.top{
-    display: flex;
-    flex-direction: row;
-    max-height: 100px;
-    font-family: 'Ariel', cursive;
+.row {
+    margin: 20px 0px;
 }

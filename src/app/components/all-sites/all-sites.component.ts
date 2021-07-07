@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { SiteDisplay } from 'src/shared/models/SiteDisplay.model';
 import { SiteService } from 'src/shared/services/site.service';
 
@@ -11,9 +13,8 @@ export class AllSitesComponent implements OnInit {
   site:SiteDisplay=new SiteDisplay();
   
   sites:SiteDisplay[]= []
- headers:string[]=[
- "קוד האתר"
- ,"שם האתר"
+  displayedColumns:string[]=[
+"שם האתר"
  ,"סוג האתר"
  ,"כתובת"
  ,"אזור"
@@ -25,31 +26,24 @@ export class AllSitesComponent implements OnInit {
  ,"חינם/לא בחינם"
  ,"הגעה עצמית/תחבורה ציבורית"
  ,"זמן ממוצע לבילוי"
- ,"פעיל/לא פעיל"]
-  
-  ;
+ ,"פעיל/לא פעיל",
+"שנה סטטוס",
+"ערוך"]
+dataSource:any
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private siteService:SiteService) {
-    this.site.CodeSite=1;
-    this.site.NameSite="קבר הרשבי";
-    this.site.NameSiteKind="קבר";
-    this.site.Adress="מירון ישראל";
-    this.site.NameSub_Region="הגליל";
-    this.site.NameRegion="צפון";
-    this.site.ExtraLevel=1;
-    this.site.MinAge=0;
-    this.site.MaxAge=120;
-    this.site.MisLiterWater=1;
-    this.site.Free_notFree="חינם";
-    this.site.Car_bus="תחבורה ציבורית";
-    this.site.TimeSpend=0.5;
-    this.site.StatusSite="פעיל";
-    this.sites.push(this.site);
-  //       this.siteService.GetAllSites().subscribe(sitesList=>{
-  //     this.sites=sitesList;
-  //  });
+        this.siteService.GetAllSites().subscribe(sitesList=>{
+      // this.sites=sitesList;
+      // console.log(sitesList)
+      // console.log(this.sites)
+      this.dataSource = new MatTableDataSource(sitesList);
+      this.dataSource.paginator = this.paginator;
+   });
+   console.log(this.sites)
+
   }
   ngOnInit(): void {
-
+   
   }
-
 }

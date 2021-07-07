@@ -1,17 +1,17 @@
 export class Site{
     CodeSite?:number
-    codeSiteKind?:number
-    nameSite?:string
-    adress?:string
-    codeSub_Region?:number
-    extraLevel?:number
-    minAge?:number
-    maxAge?:number
-    misLiterWater?:number
-    free_notFree?:boolean
-    sumToPay?:number
-    car_bus?:boolean
-    coordination?:string
-    timeSpend?:number
-    statusSite?:boolean
+    CodeSiteKind?:number
+    NameSite?:string
+    Adress?:string
+    CodeSub_Region?:number
+    ExtraLevel?:number
+    MinAge?:number
+    MaxAge?:number
+    MisLiterWater?:number
+    Free_notFree?:boolean
+    SumToPay?:number
+    Car_bus?:boolean
+    Coordination?:string
+    TimeSpend?:number
+    StatusSite?:boolean
 }

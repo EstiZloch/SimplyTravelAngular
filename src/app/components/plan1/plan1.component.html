@@ -7,59 +7,61 @@
               </div> -->
               <div class="row">
                   <h1 style=" text-align: start;" >התחל בתכנון הטיול</h1>
-<h2 style=" text-align: start;" >במידה והינך חפץ בתכנון אתרים ללא פרמטרים, לחץ על כפתור התכנון ללא מילוי הפרטים</h2>
+<h2 style=" text-align: start;" >במידה והינך חפץ בתכנון אתרים ללא פרמטרים, לחץ על התחל תכנון ללא פרמטרים והכנס משך זמן לטיול וכתובת יציאה</h2>
                   <mat-divider></mat-divider>
-
+                  
               </div> <br>
               <div class="row">
                 <div style="margin-top:50px"class="col-sm-6">
                   <div class="box">
                       <mat-label>כתובת יציאה</mat-label>
-                      <app-input-map></app-input-map>
+                      <input ngx-google-places-autocomplete =
+                      'options'  (onAddressChange)="AddressChange($event)"/>
                 </div>
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button value="1">חצי יום</mat-radio-button>
-                              <mat-radio-button value="0">יום</mat-radio-button>
+                              <mat-radio-button value="0" name="half" ngDefaultControl [(ngModel)]="half">חצי יום</mat-radio-button>
+                              <mat-radio-button value="1" name="all" ngDefaultControl  [(ngModel)]="half">יום</mat-radio-button>
                           </mat-radio-group>
                       </div>
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button value="0" [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
-                              <mat-radio-button value="1" [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
+                              <mat-radio-button value="0" [checked]="check?false:true" name="busSite" ngDefaultControl [(ngModel)]="favoriteSeason"> רק בתחבורה ציבורית</mat-radio-button>
+                              <mat-radio-button value="1" [checked]="check" name="carSite" ngDefaultControl [(ngModel)]="favoriteSeason">אפשרי בהגעה עצמית</mat-radio-button>
                           </mat-radio-group>
                       </div>
                   </div>
               <div class="col-sm-6">
 
-                      <div class="field">
-                          <mat-form-field appearance="outline">
-                              <mat-label>אזור</mat-label>
-                              <mat-select #select (change)="selectRegion(select.value)">
-                                  <mat-option *ngFor="let region of regions"> {{region.NameRegion}}</mat-option>
-                              </mat-select>
-                              <mat-icon matSuffix>travel_explore </mat-icon>
-                          </mat-form-field>
-                      </div>
-                      <div class="field">
-                          <mat-form-field appearance="outline">
-                              <mat-label>תת אזור</mat-label>
-                              <mat-select #selectSubRegion (change)="SubRegion(selectSubRegion.value)">
-                                  <mat-option *ngFor="let sub of sub_regions" value={{sub.CodeSub_Region}}>
-                                      {{sub.nameSub_Region}}
-                                  </mat-option>
-                              </mat-select>
-                              <mat-icon matSuffix>emoji_transportation</mat-icon>
+                <div class="field">
+                  <mat-form-field appearance="outline">
+                      <mat-label>אזור</mat-label>
+                      <mat-select #select (selectionChange)="selectRegionType(select.value)">
+                          <mat-option *ngFor="let region of regions" value="{{region.NameRegion}}"> {{region.NameRegion}}</mat-option>
+                      </mat-select>
+                      <mat-icon matSuffix>travel_explore </mat-icon>
+                  </mat-form-field>
+              </div>
+              <div class="field">
+                  <mat-form-field appearance="outline">
+                      <mat-label>תת אזור</mat-label>
+                      <mat-select #selectSub (selectionChange)="selectSubRegion(selectSub.value)">
+                          <mat-option *ngFor="let sub of sub_regions" value={{sub.CodeSub_Region}}>
+                              {{sub.nameSub_Region}}
+                          </mat-option>
+                      </mat-select>
+                      <mat-icon matSuffix>emoji_transportation</mat-icon>
 
-                          </mat-form-field>
-                      </div>
+                  </mat-form-field>
+              </div>
+
    
 
 
                   <div class="field">
                     <mat-form-field appearance="outline">
                         <mat-label>גיל מינימלי</mat-label>
-                        <input matInput [(ngModel)]="newCustomer.MaxAge" name="minAge">
+                        <input matInput [(ngModel)]="min" name="minAge">
                         <mat-icon matSuffix>child_care </mat-icon>
 
                     </mat-form-field>
@@ -67,7 +69,7 @@
                 <div class="field">
                     <mat-form-field appearance="outline">
                         <mat-label>גיל מקסימלי</mat-label>
-                        <input matInput [(ngModel)]="newCustomer.MinAge" name="maxAge">
+                        <input matInput [(ngModel)]="max" name="maxAge">
                         <mat-icon matSuffix>elderly </mat-icon>
 
                     </mat-form-field>
@@ -79,11 +81,14 @@
             </div>
         </div>
           <div class="row">
+            <mat-spinner *ngIf="spinner"></mat-spinner>
               <div class="col-sm-5"></div>
-              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary">התחל תכנון</button></div>
+              <div class="col-sm-2"> <button  mat-flat-button color="primary" (click)="PlanWith()">התחל תכנון</button></div>
+              <div class="col-sm-2"> <button  mat-flat-button color="primary" (click)="PlanWithout()">התחל תכנון ללא פרמטרים</button></div>
               <div class="col-sm-5"></div>
             </div>
           </mat-card>
+
       </div>
     </div>   
 

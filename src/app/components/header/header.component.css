@@ -2,8 +2,13 @@
     -webkit-box-shadow: 0px 0px 8px 2px #8cab9b;
     -moz-box-shadow: 0px 0px 8px 2px #8cab9b;
     box-shadow: 0px 0px 8px 2px #8cab9b;
+    height: 65px;
 }
 
 .img {
     height: 60px;
+}
+
+.row {
+    margin: 0px;
 }
