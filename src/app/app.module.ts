@@ -66,7 +66,8 @@ BrowserAnimationsModule,
     MatCheckboxModule,
     MatTabsModule,
     ChartsModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+
   ],
   declarations: [
     AppComponent,
@@ -90,6 +91,10 @@ BrowserAnimationsModule,
     ChangePasswordComponent,
     AllSitesComponent,
     HeaderComponent,
+AlertComponent,
+
+  ],
+  entryComponents: [
     AlertComponent
   ],
   providers: [   

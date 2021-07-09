@@ -15,3 +15,9 @@ img{
   form{
     margin-top: 25px;
   }
+  .btnInAlert
+  {
+    background-color: transparent;
+    border: none;
+text-decoration: underline;
+  }

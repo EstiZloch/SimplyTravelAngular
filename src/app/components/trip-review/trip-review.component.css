@@ -17,3 +17,19 @@
     border: none;
 text-decoration: underline;
   }
+  .details{
+    display: flex;
+    flex-direction: row;
+  }
+  .sitesDetails{
+    flex:1;
+text-align: start;
+  }
+  .bold{
+    color: navy !important;
+    font-weight: bold!important;;
+  }
+  .bold{
+    color:black;
+    font-weight: normal;
+  }

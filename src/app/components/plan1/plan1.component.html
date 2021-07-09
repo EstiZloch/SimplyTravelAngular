@@ -11,6 +11,12 @@
                   <mat-divider></mat-divider>
                   
               </div> <br>
+              <div *ngIf="alert" #alert class="alert alert-danger" role="alert">
+                <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Ops!!!</strong> לא נמצאו במערכת אתרים שעונים לקריטריונים שלך בבקשה סמן קריטריונים אחרים
+              </div>
               <div class="row">
                 <div style="margin-top:50px"class="col-sm-6">
                   <div class="box">

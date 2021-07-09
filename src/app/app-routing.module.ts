@@ -13,12 +13,13 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
-  {path:'plan1',component:Plan1Component,pathMatch:'full'},
-  { path: '', component: Plan1Component },
+  {path:'',component:LoginComponent},
+  {path:'plan1',component:Plan1Component},
+
+  { path: 'Welcome', component: WelcomeComponent },
     { path: 'LogIn', component: SigninComponent },
     { path: 'SignUp', component: SignupComponent },
     { path: 'ForgetPassword', component: ForgetPasswordComponent },
-    {path:'Start',component:StartPageComponent},
     {path:'map',component:InputMapComponent},
     {path:'tripsHistory',component:TripsHistoryComponent},
     {path:'allSites',component:AllSitesComponent},

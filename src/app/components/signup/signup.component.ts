@@ -3,6 +3,7 @@ import { Customer } from 'src/shared/models/Customer.model';
 import { CustomerService } from 'src/shared/services/customer.service';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResultsService } from 'src/shared/services/results.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,9 +12,11 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   hide = true;
+  new: boolean=false;
   newCustomer:Customer=new Customer();
   confirmPass:string=this.newCustomer.PasswordCustomer;
-  constructor(private  customerService:CustomerService,private router: Router) { }
+  Login:boolean=false
+  constructor(private  customerService:CustomerService,private router: Router,private result:ResultsService) { }
 
   ngOnInit(): void {
     sessionStorage.setItem('enter','0');
@@ -24,20 +27,19 @@ export class SignupComponent implements OnInit {
      this.newCustomer.IdCustomer=customerId; 
      if(customerId!=0)
       {
-        sessionStorage.setItem('companyId',customerId.toString())
-        this.router.navigate(['/Election']);
+        this.result.SetId(customerId);
+        this.router.navigate(['/Welcome']);
       }
      else 
-     console.log("בחר שם אחר שם משתמש זה כבר קיים במערכת")
+     {
+      this.Login=true
+
+     }
+
      });
      
     }
-    checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-     // let pass = group.get('password').value;
-      //let confirmPass = group.get('confirmPass').value;
-    
-     // return pass === confirmPass ? null : { notSame: true }     
-    }
+
     forget(frm:any){
       this.customerService.Forget(this.newCustomer).subscribe(customerId=>{
         //לקבל את התעודת זהות שנכנס עכשיו ולשלוח אותו לאזור האישי 
@@ -51,4 +53,15 @@ export class SignupComponent implements OnInit {
         console.log("בחר שם אחר שם משתמש זה כבר קיים במערכת")
         });
     }
+    OldCustomerClick(){
+      window.location.reload();
+        }
+        closeAlert() {
+          this.Login=false;
+        }
+    comeBack()
+  {
+    this.Login=false
+this.OldCustomerClick()
+  }
 }

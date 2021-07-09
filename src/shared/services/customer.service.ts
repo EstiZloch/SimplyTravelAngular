@@ -31,4 +31,10 @@ GetDetails(id:number):Observable<Customer>
 {
  return this.http.get<Customer>(`${this.url}getDetails/${id}`)
 }
+Update(customer:Customer):Observable<void>
+{
+let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
+headers.append("Access-Control-Allow-Origin", "*")
+return this.http.post<void>(`${this.url}UpdatePassword`,customer);
+}
 }

@@ -24,6 +24,9 @@ export class TripsHistoryComponent implements OnInit {
      this.tripName=res; 
     this.viewChildren.forEach(element => {
        element.changeNumber();
+       element.changePanelOpenState();
+
+     
      })
     }
 }

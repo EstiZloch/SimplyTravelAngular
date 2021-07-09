@@ -4,6 +4,8 @@ import {CustomerService} from '../../../shared/services/customer.service'
 import {SignIn} from '../../../shared/models/SignIn.model'
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResultsService } from 'src/shared/services/results.service';
+import { textSpanIsEmpty } from 'typescript';
 
 @Component({
   selector: 'app-signin',
@@ -19,8 +21,10 @@ export class SigninComponent implements OnInit {
   loginForm:FormGroup
   forgetPassword: boolean=false;
   new: boolean=false;
+  incorrect:boolean=false
+  inLogin:boolean=false
   constructor( private customer:CustomerService,
-    private router:Router,
+    private router:Router,private result:ResultsService
     ) { }
 
   ngOnInit(): void {
@@ -31,10 +35,24 @@ export class SigninComponent implements OnInit {
       {
         if(userId>0)
         {
-          sessionStorage.setItem('userId',userId.toString())
-          this.router.navigate(['/EditElection']);
+          this.result.SetId(userId);
+          this.router.navigate(['/Welcome']);
+        }
+        else
+        if(userId==0)
+        {
+        this.incorrect=true
+this.newCustomer.PasswordCustomer=''
+        }
+        else
+        {
+        this.inLogin=true
+
         }
       })
+  }
+  closeAlert() {
+    this.incorrect=false;
   }
   forget(frm:any){
     this.hideMail=true;
@@ -56,6 +74,11 @@ export class SigninComponent implements OnInit {
   }
   newCustomerClick(){
 this.new=true;
+  }
+  comeBack()
+  {
+    this.inLogin=false
+this.newCustomerClick()
   }
   }
 

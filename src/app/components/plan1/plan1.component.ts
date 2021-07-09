@@ -31,7 +31,7 @@ half:'1';
 carOrBus:boolean;
 customerDetails:Customer
 check:boolean
-
+alert:boolean=false
   constructor(private result:ResultsService,private region:RegionService,private sub:SubRegionService,private site:SiteService,private router:Router,private customerService:CustomerService)
    { 
 this.customerService.GetDetails(this.idCus).subscribe(details=>{
@@ -48,8 +48,10 @@ this.customerService.GetDetails(this.idCus).subscribe(details=>{
 
 
    }
-
-
+   closeAlert() {
+    this.alert=false;
+  }
+ 
  
   ngOnInit(): void {
     this.region.GetRegions().subscribe(regions => {
@@ -74,6 +76,7 @@ this.code=value;
   {
 this.sub.GetSubRegions(region).subscribe(sub => {
   console.log(this.sub_regions)
+
   this.sub_regions = sub;
  });
   } 
@@ -86,12 +89,27 @@ this.spinner=true;
   this.carOrBus=false
  if(this.half=='1')
   this.site.Plan(this.code,this.min,this.max,this.address,false,this.carOrBus).subscribe(sub => {
-    console.log(this.sub)
+    if(sub==null)
+  {
+    this.spinner=false
+    this.alert=true
+  }
+    else{
+    this.result.SetResults(sub);
+    this.router.navigate(['/tripsHistory']);
+    }
    });
    else
    this.site.Plan(this.code,this.min,this.max,this.address,true,this.carOrBus).subscribe(sub => {
+    if(sub==null)
+    {
+      this.spinner=false
+    this.alert=true
+    }
+    else{
     this.result.SetResults(sub);
     this.router.navigate(['/tripsHistory']);
+    }
    });
    
 }
@@ -99,9 +117,16 @@ PlanWithout()
 {
   this.spinner=true;
     this.site.Plan(-1,0,0,this.address,true,true).subscribe(sub => {
-      console.log(sub)
+      if(sub==null)
+      {
+        this.spinner=false
+      this.alert=true
+      }
+      else
+      {
       this.result.SetResults(sub);
       this.router.navigate(['/tripsHistory']);
+      }
      });
   
 }

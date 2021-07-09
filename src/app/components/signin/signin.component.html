@@ -5,6 +5,18 @@
       <div *ngIf="new==false">
           <br/>
           <form novalidate #frm="ngForm">
+            <div *ngIf="incorrect" #alert class="alert alert-danger" role="alert">
+                <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Ops!!!</strong>  הסיסמא לא נכונה אנא נסה שנית 
+              </div>
+              <div *ngIf="inLogin" #alert class="alert alert-warning" role="alert">
+                <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Warning!!!</strong> מספר תעודת זהות זה לא רשום במערכת רוצה להצטרף? <button type="button" class="btnInAlert" (click)="comeBack()">לחץ כאן</button>
+              </div>
               <div class="input">
                   <mat-form-field class="example-full-width">
                       <input ngbTooltip="תעודת זהות חייב להכיל 9 תוים" triggers="click:blur" tooltipClass="tooltip" matInput placeholder="תעודת זהות" name="idUser" [(ngModel)]="newCustomer.IdCustomer" type="text" #userName="ngModel" required minlength="9" maxlength="9" />

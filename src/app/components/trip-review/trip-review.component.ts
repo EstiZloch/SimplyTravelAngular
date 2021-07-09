@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Site } from 'src/shared/models/Site.model';
-import { SiteInTrip } from 'src/shared/models/SiteInTrip.model';
+import { SiteDisplay } from 'src/shared/models/SiteDisplay.model';
 import { SiteInTripToAdd } from 'src/shared/models/SiteInTripToAdd.model';
 import { Trip } from 'src/shared/models/Trip.model';
 
 import { ResultsService } from 'src/shared/services/results.service';
 import { SiteInTripService } from 'src/shared/services/site-in-trip.service';
+import { SiteService } from 'src/shared/services/site.service';
 import { TripService } from 'src/shared/services/trip.service';
 
 @Component({
@@ -16,6 +16,7 @@ import { TripService } from 'src/shared/services/trip.service';
   styleUrls: ['./trip-review.component.css']
 })
 export class TripReviewComponent implements OnInit {
+  panelOpenState = false;
   name:string
   DisplayName:boolean=false
   show:boolean=false
@@ -25,7 +26,8 @@ export class TripReviewComponent implements OnInit {
   enableOneTime:boolean=false
   idCus:number=this.result.GetId()
   favoriteEnable:boolean=false
-  Sites1:string[]=["נחל הקיבוצים","טופ מנגו"]
+  site:SiteDisplay[]
+  Sites1:string[]=["נחל יגור","חי פארק","נחל הקיבוצים","טופ מנגו"]
   Sites2:string[]=["כינרת","אקוה כיף"]
   Sites3:string[]=["רמבם","רשבי"]
   Sites4:string[]=["צלילה אילת","מכתשים"]
@@ -35,10 +37,10 @@ export class TripReviewComponent implements OnInit {
   @Input() tripName:string;
   onInitialized = new EventEmitter<TripReviewComponent>();
 
-  constructor(private result:ResultsService,private router:Router,private tripService:TripService,private siteInTrip:SiteInTripService) 
+  constructor(private result:ResultsService,private router:Router,private tripService:TripService,private siteInTrip:SiteInTripService,private siteService:SiteService) 
   { 
     // this.sites=result.GetResults();
-    console.log(this.sites)
+
   }
   closeAlert() {
     this.show=false;
@@ -50,6 +52,10 @@ export class TripReviewComponent implements OnInit {
  public changeNumber()
 {
   this.index=this.result.GetNumber();
+}
+public changePanelOpenState()
+{
+  this.panelOpenState=false
 }
 AddFavorite()
 {
@@ -79,10 +85,17 @@ this.newTrip.NameTrip=this.name
   }
 DisplayTripDetail()
 {
-  this.router.navigate(['/allSites']);
+  this.siteService.GetSiteDetails(this.sites[this.index-1]).subscribe(details=>{
+    console.log(details)
+    this.site=details
+    
+  });
 }
- 
+
+
+
+}
  
 
 
-}
+

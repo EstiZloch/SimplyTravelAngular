@@ -28,3 +28,9 @@
    margin-top: -10px;
    height: 350px;
   }
+  .btnInAlert
+  {
+    background-color: transparent;
+    border: none;
+text-decoration: underline;
+  }

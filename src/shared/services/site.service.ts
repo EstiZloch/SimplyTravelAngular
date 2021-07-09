@@ -39,5 +39,8 @@ GetMin(code:number):Observable<number> {
                       return this.http.get<string[][]>(`${this.url}plan/${code}/${min}/${max}/${address}/${half}/${carOrBus}/${this.result.GetId()}`)
                     }
 
+                    GetSiteDetails(name:string[]):Observable<SiteDisplay[]> {
+                      return this.http.get<SiteDisplay[]>(`${this.url}getSiteDetails/${name}`)
+                    }
 
 }

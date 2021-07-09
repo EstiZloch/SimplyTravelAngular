@@ -1,6 +1,14 @@
 <!-- <body class="gradient"> -->
+    <div *ngIf="Login" #alert class="alert alert-warning" role="alert">
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        לקוח זה רשום כבר במערכת למעבר להתחברות <button type="button" class="btnInAlert" (click)="comeBack()">לחץ כאן</button>
+      </div>
   <div class="frm" id=frm>
+
     <form novalidate (submit)="SignUp(frm)" #frm="ngForm">
+
         <div class="input">
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="תעודת זהות" name="IdCustomer" [(ngModel)]="newCustomer.IdCustomer" type="text" #IdCustomer="ngModel" required [minLength]=9 maxlength="9">
@@ -56,4 +64,5 @@
 
     </form>
 </div>
+
 <!-- </body> -->
