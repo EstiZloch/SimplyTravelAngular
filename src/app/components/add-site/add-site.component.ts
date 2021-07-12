@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { Region } from 'src/shared/models/Region.model';
 import { Site } from 'src/shared/models/Site.model';
 import { SubRegion } from 'src/shared/models/SubRegion.model';
 import { RegionService } from 'src/shared/services/region.service';
+import { ResultsService } from 'src/shared/services/results.service';
 import { SiteService } from 'src/shared/services/site.service';
 import { SubRegionService } from 'src/shared/services/sub-region.service';
 
@@ -22,7 +21,12 @@ export class AddSiteComponent implements OnInit {
   free_not: string = '1';
   season: string = '0';
   favoriteSeason: string = '1';
+  buttonText="הוסף"
+  check1:boolean
+  check2:boolean
+  extraLevel:number=0
   newSite:Site=new Site();
+  stam:string="מוזאון"
     options={
       componentRestrictions:{
         
@@ -33,8 +37,29 @@ export class AddSiteComponent implements OnInit {
 
       }
     title = 'rou';
+@ViewChild('selectType',{static:false}) mySelect:ElementRef;
+  constructor(private  siteService:SiteService,private router: Router,private region:RegionService,private sub:SubRegionService,private result:ResultsService) {
+console.log(this.stam)
 
-  constructor(private  siteService:SiteService,private router: Router,private region:RegionService,private sub:SubRegionService) { }
+    if(this.result.GetCode()!=-1)
+    {
+      
+    this.buttonText="עדכן"
+    console.log(this.buttonText)
+    this.siteService.GetSiteDetailsByCode(this.result.GetCode()).subscribe(siteDetails=>{
+this.newSite=siteDetails
+      if(siteDetails.Car_bus)
+      this.check1=true
+      else
+      this.check1=false
+      if(siteDetails.Free_notFree)
+      this.check2=true
+      else
+      this.check2=false
+      this.extraLevel=Number(siteDetails.ExtraLevel)
+    })
+    }
+   }
   formatLabel(value: number) {
     let lavels=['קל','בינוני','קשה']
     if (value >= 1) {
@@ -42,22 +67,23 @@ export class AddSiteComponent implements OnInit {
     }
 
     return 'בחר רמה';
+    
   }
   public selectExtra(value:any)
   {
-    console.log('fvdcs')
 this.newSite.ExtraLevel=value;
   }
   public AddressChange(address: any) {
     //setting address from API to local variable
      this.newSite.Adress=String(address.formatted_address);
-console.log(this.newSite.Adress)
   }
   ngOnInit(): void {
     this.region.GetRegions().subscribe(regions => {
       this.regions = regions;
+ 
      });
      this.newSite.StatusSite=true;
+
   }
   AddSite(){
     if(this.car_bus=="1")
@@ -79,10 +105,11 @@ console.log(this.newSite.Adress)
      else 
      console.log("בחר שם אחר אתר זה כבר קיים במערכת")
      });
-     
+     this.router.navigate(['AllSite']);
     }
   selectRegionType(region:string)
   {
+
 this.sub.GetSubRegions(region).subscribe(sub => {
   this.sub_regions = sub;
  });
@@ -91,7 +118,7 @@ this.sub.GetSubRegions(region).subscribe(sub => {
   {
 this.newSite.CodeSiteKind=Number(value);
 this.siteService.GetMin(Number(value)).subscribe(min => {
-  this.newSite.MaxAge = min;
+  this.newSite.MinAge = min;
  });
  this.siteService.GetMax(Number(value)).subscribe(max => {
   this.newSite.MaxAge = max;
@@ -126,10 +153,14 @@ this.newSite.Car_bus=false;
  }
   selectSubRegion(value:string)
   {
-    console.log(value)
 this.newSite.CodeSub_Region=Number(value);
   } 
-
+  UpdateSite()
+    {
+      this.siteService.UpdateSite(this.newSite).subscribe(nameSite=>{});
+      this.router.navigate(['AllSite']);
+    }
+  
   
     }
 
