@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StepModel } from '../../../shared/models/step.model';
 import { StepsService } from '../../../shared/services/steps.service';
 import { Observable } from 'rxjs';
+import { ResultsService } from 'src/shared/services/results.service';
 
 @Component({
   selector: 'app-welcome',
@@ -16,7 +17,7 @@ export class WelcomeComponent implements OnInit {
   currentStep: Observable<StepModel>;
   
   @Input() step: StepModel;
-  constructor(private router:Router,private route:ActivatedRoute,private stepsService: StepsService) { }
+  constructor(private router:Router,private route:ActivatedRoute,private stepsService: StepsService,public result:ResultsService) { }
 
   ngOnInit(): void {
 
@@ -35,15 +36,29 @@ export class WelcomeComponent implements OnInit {
     this.router.navigate(['complete'],{relativeTo:this.route});
   }
   LogIn(){
-   // sessionStorage.setItem('enter','3')
         this.router.navigate(['LogIn'],{relativeTo:this.route});
       }
        SignUp(){
-   // sessionStorage.setItem('enter','3')
         this.router.navigate(['SignUp'],{relativeTo:this.route});
        }
        startPlanning() {
         this.router.navigate(['Start'],{relativeTo:this.route});
      }
-     
+     allSite()
+     {
+      this.router.navigate(['AllSite']);
+     }
+     details()
+     {
+      this.router.navigate(['details']);
+     }
+     changePassword()
+     {
+      this.router.navigate(['change']);
+     }
+     startPlan()
+     {
+       this.result.SetCurr(2);
+      this.router.navigate(['plan1']);
+     }
 }

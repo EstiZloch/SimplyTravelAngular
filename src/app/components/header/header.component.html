@@ -1,11 +1,14 @@
 <div class="header container-fluid" style="background-color: rgb(255,255,255,0.7);">
     <div class="row ">
         <div class="col-sm-4">
-            <img style="min-width:200px; min-height:80px" class="img" src="../assets/logo.png">
+            <img style="min-width:300px; min-height:80px" class="img" src="../assets/logo.png">
         </div>
         <div class="col-sm-4"></div>
         <div class="col-sm-4 " style="display: flex;  top: 9px;">
-            <button mat-button color="primary"><mat-icon>logout</mat-icon> &nbsp; התנתק&nbsp;</button></div>
+            <button mat-button color="primary" (click)="LogOut()"><mat-icon>logout</mat-icon> &nbsp; התנתק&nbsp;</button>
+            <button mat-button color="primary" (click)="HomePage()"><mat-icon>home</mat-icon> &nbsp; דף הבית&nbsp;</button>
+        </div>
+
 
     </div>
 </div>

@@ -36,6 +36,7 @@ export class SigninComponent implements OnInit {
         if(userId>0)
         {
           this.result.SetId(userId);
+          console.log(this.result.GetId())
           this.router.navigate(['/Welcome']);
         }
         else

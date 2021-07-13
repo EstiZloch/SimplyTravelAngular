@@ -1,14 +1,16 @@
-<div class="container">
-    <div class="row" style="height: 30px;"></div>
-    <div class="row" *ngIf="current!=1"> <img src="./../../../assets/1.png" /> </div>
-    <div class="row" *ngIf="current==1"> <img src="./../../../assets/11.png" /></div>
-    <hr/>
-    <div class="row" *ngIf="current!=2"> <img src="./../../../assets/2.png" /></div>
-    <div class="row" *ngIf="current==2"> <img src="./../../../assets/22.png" /></div>
-    <hr/>
-    <div class="row" *ngIf="current!=3"> <img src="./../../../assets/3.png" /></div>
-    <div class="row" *ngIf="current==3"> <img src="./../../../assets/33.png" /></div>
-    <hr/>
-    <div class="row" *ngIf="current!=4"> <img src="./../../../assets/4.png" /></div>
-    <div class="row" *ngIf="current==4"> <img src="./../../../assets/44.png" /></div>
+<div style="display: flex;flex: row;border-top: white solid 1px;padding-top:15px ;">
+
+    <div style="flex: 1;" *ngIf="result.GetCurr()!=1"> <img src="./../../../assets/1.png" /> </div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()==1"> <img src="./../../../assets/11.png" /></div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()!=2"> <img src="./../../../assets/2.png" /></div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()==2"> <img src="./../../../assets/22.png" /></div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()!=3"> <img src="./../../../assets/3.png" /></div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()==3"> <img src="./../../../assets/33.png" /></div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()!=4"> <img src="./../../../assets/4.png" /></div>
+    <div style="flex: 1;" *ngIf="result.GetCurr()==4"> <img src="./../../../assets/44.png" /></div>
+
+
+
+  
+
 </div>

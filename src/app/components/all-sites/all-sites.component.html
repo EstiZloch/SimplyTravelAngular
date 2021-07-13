@@ -5,7 +5,7 @@
     
                 <div class="row">
                     <h1 style=" text-align: right; display :inline; min-width: 700px;">האתרים</h1>
-                    <button  style=" margin-right: 900px; margin-bottom: 10px;" mat-flat-button color="primary" >להוספת אתר</button>
+                    <button  style=" margin-right: 900px; margin-bottom: 10px;" mat-flat-button color="primary" (click)="AddSite()">להוספת אתר</button>
                     <mat-divider></mat-divider>
   
                 </div> <br>
@@ -91,16 +91,16 @@
       <ng-container matColumnDef="שנה סטטוס">
         <th mat-header-cell *matHeaderCellDef>שנה סטטוס</th>
         <td mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="לחץ כדי לשנות סטטוס" >
-            <mat-icon color="primary" >cancel</mat-icon>
+            <mat-icon color="primary" (click)="changeStatus(element.CodeSite)">cancel</mat-icon>
            </button></td>
       </ng-container>
-      <ng-container matColumnDef="ערוך">
+      <ng-container  matColumnDef="ערוך">
         <th mat-header-cell *matHeaderCellDef>ערוך</th>
-        <td mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="לחץ כדי לערוך את האתר" >
-            <mat-icon color="primary" >edit</mat-icon>
+        <td mat-cell *matCellDef="let element"> <button  mat-icon-button matTooltip="לחץ כדי לערוך את האתר" >
+            <mat-icon color="primary" (click)="edit(element.CodeSite)">edit</mat-icon>
            </button></td>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 

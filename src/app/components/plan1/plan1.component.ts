@@ -82,6 +82,7 @@ this.sub.GetSubRegions(region).subscribe(sub => {
   } 
 PlanWith()
 {
+  this.result.SetCurr(3);
 this.spinner=true;
   if(this.favoriteSeason=='1')
   this.carOrBus=true
@@ -96,6 +97,7 @@ this.spinner=true;
   }
     else{
     this.result.SetResults(sub);
+    this.result.SetCurr(3);
     this.router.navigate(['/tripsHistory']);
     }
    });
@@ -108,6 +110,7 @@ this.spinner=true;
     }
     else{
     this.result.SetResults(sub);
+ 
     this.router.navigate(['/tripsHistory']);
     }
    });
@@ -115,6 +118,7 @@ this.spinner=true;
 }
 PlanWithout()
 {
+  this.result.SetCurr(3);
   this.spinner=true;
     this.site.Plan(-1,0,0,this.address,true,true).subscribe(sub => {
       if(sub==null)

@@ -9,7 +9,9 @@ export class ResultsService {
   
 sitesResult:string[][]
 currentNumberTrip:number
-idCustomer:number=207426974
+idCustomer:number=-1
+codeSite:number=-1
+curr:number=1
   constructor() { }
   SetResults(sitesResult:string[][]):void
   {
@@ -36,5 +38,21 @@ idCustomer:number=207426974
   GetId():number
   {
     return this.idCustomer;
+  }
+  SetCode(value:number)
+  {
+    this.codeSite=value
+  }
+  GetCode():number
+  {
+    return this.codeSite;
+  }
+  SetCurr(value:number)
+  {
+    this.curr=value
+  }
+  GetCurr():number
+  {
+    return this.curr;
   }
 }

@@ -37,4 +37,16 @@ let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
 headers.append("Access-Control-Allow-Origin", "*")
 return this.http.post<void>(`${this.url}UpdatePassword`,customer);
 }
+UpdateCustomer(customer:Customer):Observable<any>
+{
+let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
+headers.append("Access-Control-Allow-Origin", "*")
+return this.http.post<number>(`${this.url}update`,customer);
+}
+CheckPassword(customer:Customer):Observable<any>
+{
+let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
+headers.append("Access-Control-Allow-Origin", "*")
+return this.http.post<number>(`${this.url}check`,customer);
+}
 }

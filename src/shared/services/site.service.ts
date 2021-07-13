@@ -20,6 +20,12 @@ let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
 headers.append("Access-Control-Allow-Origin", "*")
 return this.http.post<number>(`${this.url}signUp`,site);
 }
+UpdateSite(site:Site):Observable<any>
+{
+let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
+headers.append("Access-Control-Allow-Origin", "*")
+return this.http.post<number>(`${this.url}update`,site);
+}
 GetMin(code:number):Observable<number> {
   return this.http.get<number>(`${this.url}getMin/${code}`)
     }
@@ -41,6 +47,15 @@ GetMin(code:number):Observable<number> {
 
                     GetSiteDetails(name:string[]):Observable<SiteDisplay[]> {
                       return this.http.get<SiteDisplay[]>(`${this.url}getSiteDetails/${name}`)
+                    }
+                    GetSiteDetailsByCode(code:number):Observable<Site> {
+                      return this.http.get<Site>(`${this.url}getSiteDetailsByCode/${code}`)
+                    }
+                    changeStatus(site:SiteDisplay):Observable<void>
+                    {
+                    let  headers=new Headers({'Content-type':'application/json; charset=utf-8'});
+                    headers.append("Access-Control-Allow-Origin", "*")
+                    return this.http.post<void>(`${this.url}changeStatus`,site);
                     }
 
 }

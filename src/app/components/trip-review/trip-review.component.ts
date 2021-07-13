@@ -39,7 +39,7 @@ export class TripReviewComponent implements OnInit {
 
   constructor(private result:ResultsService,private router:Router,private tripService:TripService,private siteInTrip:SiteInTripService,private siteService:SiteService) 
   { 
-    // this.sites=result.GetResults();
+    //  this.sites=result.GetResults();
 
   }
   closeAlert() {

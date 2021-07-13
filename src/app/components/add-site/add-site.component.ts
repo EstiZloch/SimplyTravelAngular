@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { MatSelect } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { Region } from 'src/shared/models/Region.model';
 import { Site } from 'src/shared/models/Site.model';
@@ -26,7 +27,6 @@ export class AddSiteComponent implements OnInit {
   check2:boolean
   extraLevel:number=0
   newSite:Site=new Site();
-  stam:string="מוזאון"
     options={
       componentRestrictions:{
         
@@ -37,15 +37,16 @@ export class AddSiteComponent implements OnInit {
 
       }
     title = 'rou';
-@ViewChild('selectType',{static:false}) mySelect:ElementRef;
+    @ViewChild('selectSub') mySelect: MatSelect;
   constructor(private  siteService:SiteService,private router: Router,private region:RegionService,private sub:SubRegionService,private result:ResultsService) {
-console.log(this.stam)
+    this.region.GetRegions().subscribe(regions => {
+      this.regions = regions;
+
+     });
 
     if(this.result.GetCode()!=-1)
     {
-      
     this.buttonText="עדכן"
-    console.log(this.buttonText)
     this.siteService.GetSiteDetailsByCode(this.result.GetCode()).subscribe(siteDetails=>{
 this.newSite=siteDetails
       if(siteDetails.Car_bus)
@@ -78,10 +79,7 @@ this.newSite.ExtraLevel=value;
      this.newSite.Adress=String(address.formatted_address);
   }
   ngOnInit(): void {
-    this.region.GetRegions().subscribe(regions => {
-      this.regions = regions;
- 
-     });
+
      this.newSite.StatusSite=true;
 
   }
@@ -113,6 +111,9 @@ this.newSite.ExtraLevel=value;
 this.sub.GetSubRegions(region).subscribe(sub => {
   this.sub_regions = sub;
  });
+console.log(this.mySelect)
+ this.mySelect._elementRef.nativeElement.checked=3
+ console.log(this.mySelect)
   } 
   selectTypeSite(value:string)
   {

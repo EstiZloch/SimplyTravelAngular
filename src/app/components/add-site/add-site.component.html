@@ -2,7 +2,6 @@
   <div class="row mainRow">
       <mat-card style="width: 80% ;">
           <div class="container-fluid">
-    
               <div class="row">
                   <h1 style=" text-align: start;">הזן פרטי אתר</h1>
 
@@ -13,26 +12,26 @@
                   <div style="max-width: 30%;" class="col-sm-6">
                       <div class="box">
                           <mat-label>כתובת אתר</mat-label>
-                          <input ngx-google-places-autocomplete =
+                          <input [(ngModel)]="newSite.Adress" ngx-google-places-autocomplete =
                           'options'  (onAddressChange)="AddressChange($event)"/>
                       </div>
                       <div class="box">
                           <label>רמת אתגר</label>
-                          <mat-slider color="primary" thumbLabel #extra [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="3" value="0" aria-label="units" (change)="Extra(extra.value)"></mat-slider>
+                          <mat-slider color="primary" thumbLabel #extra [displayWith]="formatLabel" tickInterval="1" step="1" min="0" max="3" value="{{extraLevel}}" aria-label="units" (change)="Extra(extra.value)"></mat-slider>
  
                       </div>
 
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button #not_free value="1">בתשלום</mat-radio-button>
-                              <mat-radio-button value="0">ללא תשלום </mat-radio-button>
+                              <mat-radio-button [checked]="check2?false:true" #not_free value="1">בתשלום</mat-radio-button>
+                              <mat-radio-button [checked]="check2" value="0">ללא תשלום </mat-radio-button>
                           </mat-radio-group>
                       </div>
 
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button value="0" name="busSite" ngDefaultControl [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
-                              <mat-radio-button value="1" name="carSite" ngDefaultControl [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
+                              <mat-radio-button value="0" name="busSite" [checked]="check1?false:true" ngDefaultControl [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
+                              <mat-radio-button value="1" name="carSite" [checked]="check1" ngDefaultControl [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
                           </mat-radio-group>
                       </div>
                   </div>
@@ -75,8 +74,7 @@
                           <mat-form-field appearance="outline">
 
                               <mat-label>סוג</mat-label>
-                              <mat-select #selectType (selectionChange)="selectTypeSite(selectType.value)">
-
+                              <mat-select matNativeControl  value="{{newSite.CodeSiteKind}}" #selectType (selectionChange)="selectTypeSite(selectType.value)">
                                   <mat-option value="1">קבר</mat-option>
                                   <mat-option value="3">בית קפה</mat-option>
                                   <mat-option value="4">אטרקציה רטובה</mat-option>
@@ -103,7 +101,7 @@
                       <div class="field">
                           <mat-form-field appearance="outline">
                               <mat-label>אזור</mat-label>
-                              <mat-select #select (selectionChange)="selectRegionType(select.value)">
+                              <mat-select  #select (selectionChange)="selectRegionType(select.value)">
                                   <mat-option *ngFor="let region of regions" value="{{region.NameRegion}}"> {{region.NameRegion}}</mat-option>
                               </mat-select>
                               <mat-icon matSuffix>travel_explore </mat-icon>
@@ -128,7 +126,8 @@
           </div>
           <div class="row">
               <div class="col-sm-5"></div>
-              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary" (click)="AddSite()">הוסף</button></div>
+              <div class="col-sm-2"> <button *ngIf="buttonText=='הוסף'" style="width: 100%;" mat-flat-button color="primary" (click)="AddSite()" >הוסף</button>
+             <button *ngIf="buttonText=='עדכן'" style="width: 100%;" mat-flat-button color="primary" (click)="UpdateSite()" >עדכן</button></div>
               <div class="col-sm-5"></div>
 
           </div>

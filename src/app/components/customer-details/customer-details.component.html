@@ -5,7 +5,7 @@
               <!-- <div class="row">
                  
               </div> -->
-              <div class="row">
+              <div class="row" style="margin:0px">
                   <h1 style=" text-align: start;">פרטים נוספים</h1>
 
                   <mat-divider></mat-divider>
@@ -22,15 +22,15 @@
 
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button name="notFree" value="1">בתשלום</mat-radio-button>
-                              <mat-radio-button name="free" value="0">ללא תשלום </mat-radio-button>
+                              <mat-radio-button [checked]="check2?false:true" name="notFree" value="1">בתשלום</mat-radio-button>
+                              <mat-radio-button [checked]="check2" name="free" value="0">ללא תשלום </mat-radio-button>
                           </mat-radio-group>
                       </div>
 
                       <div class="box">
                           <mat-radio-group>
-                              <mat-radio-button name="carC" ngDefaultControl value="0" [(ngModel)]="favoriteSeason">אפשרי לתחבורה ציבורית</mat-radio-button>
-                              <mat-radio-button name="busC" ngDefaultControl value="1" [(ngModel)]="favoriteSeason">רק הגעה עצמית</mat-radio-button>
+                              <mat-radio-button [checked]="check1?false:true" name="carC" ngDefaultControl value="0" [(ngModel)]="favoriteSeason">רק תחבורה ציבורית</mat-radio-button>
+                              <mat-radio-button [checked]="check1" ame="busC" ngDefaultControl value="1" [(ngModel)]="favoriteSeason">הגעה עצמית</mat-radio-button>
                           </mat-radio-group>
                       </div>
    
@@ -40,7 +40,7 @@
                       <div class="field">
                           <mat-form-field appearance="outline">
                               <mat-label>תעודת זהות</mat-label>
-                              <input value="025547787" matInput readonly [(ngModel)]="idCustomer" name="idC">
+                              <input matInput readonly [(ngModel)]="newCustomer.IdCustomer" name="idC">
                               <mat-icon matSuffix>perm_identity </mat-icon>
 
                           </mat-form-field>
@@ -85,7 +85,9 @@
           </div>
           <div class="row">
               <div class="col-sm-5"></div>
-              <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary">הוסף</button></div>
+              <div class="col-sm-2"> <button style="width: 100%;" (click)="AddDetails()"mat-flat-button color="primary">עדכן פרטים</button>
+            
+            </div>
               <div class="col-sm-5"></div>
 
           </div>

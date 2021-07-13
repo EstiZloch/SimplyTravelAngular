@@ -1,8 +1,7 @@
-<router-outlet></router-outlet> 
- <!-- <app-welcome></app-welcome--->
-<!-- <app-plan1></app-plan1>  -->
-<!-- <app-trips-history></app-trips-history>  -->
-<!-- <app-add-site></app-add-site> -->
-<!-- <app-alert></app-alert> -->
+<div *ngIf="result.GetId()!=-1">
+<app-header></app-header>
+</div>
+<router-outlet></router-outlet>  
+
 
 

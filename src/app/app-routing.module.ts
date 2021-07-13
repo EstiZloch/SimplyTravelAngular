@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddSiteComponent } from './components/add-site/add-site.component';
 import { AllSitesComponent } from './components/all-sites/all-sites.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { InputMapComponent } from './components/input-map/input-map.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,7 +20,10 @@ const routes: Routes = [
   {path:'plan1',component:Plan1Component},
 
   { path: 'Welcome', component: WelcomeComponent },
-    { path: 'LogIn', component: SigninComponent },
+  { path: 'AllSite', component: AllSitesComponent },
+  { path: 'details', component: CustomerDetailsComponent },
+  { path: 'change', component: ChangePasswordComponent },
+  { path: 'AddSite', component: AddSiteComponent },
     { path: 'SignUp', component: SignupComponent },
     { path: 'ForgetPassword', component: ForgetPasswordComponent },
     {path:'map',component:InputMapComponent},

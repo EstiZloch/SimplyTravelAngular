@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { SiteDisplay } from 'src/shared/models/SiteDisplay.model';
+import { ResultsService } from 'src/shared/services/results.service';
 import { SiteService } from 'src/shared/services/site.service';
 
 @Component({
@@ -11,7 +13,6 @@ import { SiteService } from 'src/shared/services/site.service';
 })
 export class AllSitesComponent implements OnInit {
   site:SiteDisplay=new SiteDisplay();
-  
   sites:SiteDisplay[]= []
   displayedColumns:string[]=[
 "שם האתר"
@@ -32,18 +33,42 @@ export class AllSitesComponent implements OnInit {
 dataSource:any
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(private siteService:SiteService) {
+  constructor(private siteService:SiteService,private router:Router,private result:ResultsService) {
         this.siteService.GetAllSites().subscribe(sitesList=>{
-      // this.sites=sitesList;
-      // console.log(sitesList)
-      // console.log(this.sites)
       this.dataSource = new MatTableDataSource(sitesList);
       this.dataSource.paginator = this.paginator;
+      console.log(sitesList[0])
    });
-   console.log(this.sites)
+
 
   }
   ngOnInit(): void {
    
   }
+  AddSite()
+  {
+    this.router.navigate(['AddSite']);
+    this.siteService.GetAllSites().subscribe(sitesList=>{
+      this.dataSource = new MatTableDataSource(sitesList);
+      this.dataSource.paginator = this.paginator;
+   });
+  }
+  changeStatus(codeSite:number)
+  {
+    this.site=new SiteDisplay();
+    this.site.CodeSite=codeSite
+this.siteService.changeStatus(this.site).subscribe(s=>{
+  this.siteService.GetAllSites().subscribe(sitesList=>{
+    this.dataSource = new MatTableDataSource(sitesList);
+    this.dataSource.paginator = this.paginator;
+  });
+});
+
+  }
+  edit(codeSite:number)
+  {
+    this.result.SetCode(codeSite);
+    this.router.navigate(['AddSite']);
+  }
+
 }
