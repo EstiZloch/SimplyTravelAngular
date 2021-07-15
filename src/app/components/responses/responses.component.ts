@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseService } from 'src/shared/services/response.service';
+import { ResultsService } from 'src/shared/services/results.service';
 
 @Component({
   selector: 'app-responses',
@@ -6,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./responses.component.css']
 })
 export class ResponsesComponent implements OnInit {
-  responses:string[]=["04/04/2021 נחל שורק",
-  '01/05/2019 טיול משפחתי לצפון ',
-  "21/08/2017 יציאה נחמדה"];
+  responses:Response[]
   tripName:string
+  constructor(private responsesService:ResponseService,private result:ResultsService){}
   ngOnInit(): void {
+this.responsesService.GetResponses(this.result.GetCodeTrip()).subscribe(sites=>{
+ this.responses=sites
+})
   }
   onClick(res:any) {
     this.tripName=res;

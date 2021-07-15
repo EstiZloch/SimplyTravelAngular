@@ -27,20 +27,19 @@ export class TripReviewComponent implements OnInit {
   idCus:number=this.result.GetId()
   favoriteEnable:boolean=false
   site:SiteDisplay[]
-  Sites1:string[]=["נחל יגור","חי פארק","נחל הקיבוצים","טופ מנגו"]
-  Sites2:string[]=["כינרת","אקוה כיף"]
-  Sites3:string[]=["רמבם","רשבי"]
-  Sites4:string[]=["צלילה אילת","מכתשים"]
-  Sites5:string[]=["נבי סמואל","כותל"]
-  sites:string[][]=[this.Sites1,this.Sites2,this.Sites3,this.Sites4,this.Sites5]
-  //  sites:string[][]
+  // Sites1:string[]=["נחל יגור","חי פארק","נחל הקיבוצים","טופ מנגו"]
+  // Sites2:string[]=["כינרת","אקוה כיף"]
+  // Sites3:string[]=["רמבם","רשבי"]
+  // Sites4:string[]=["צלילה אילת","מכתשים"]
+  // Sites5:string[]=["נבי סמואל","כותל"]
+  // sites:string[][]=[this.Sites1,this.Sites2,this.Sites3,this.Sites4,this.Sites5]
+  sites:string[][]
   @Input() tripName:string;
   onInitialized = new EventEmitter<TripReviewComponent>();
 
   constructor(private result:ResultsService,private router:Router,private tripService:TripService,private siteInTrip:SiteInTripService,private siteService:SiteService) 
   { 
-    //  this.sites=result.GetResults();
-
+      this.sites=result.GetResults();
   }
   closeAlert() {
     this.show=false;

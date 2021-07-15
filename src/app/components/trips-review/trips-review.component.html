@@ -1,0 +1,56 @@
+
+        <div *ngIf="show" #alert class="alert alert-success" role="alert">
+            <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Great!!!</strong>  הטיול הוסף בהצלחה! לחזרה לרשימת הטיולים <button type="button" class="btnInAlert" (click)="comeBack()">לחץ כאן</button>
+          </div>
+
+<div *ngIf="!DisplayName" class="container-fluid back">
+    <div class="row">
+        <h1 style=" text-align: center;">פירוט הטיול:</h1>
+    </div>
+
+   
+    <div  class="row">
+
+        <mat-stepper>
+             <mat-step *ngFor="let site of sites[index]">
+                <ng-template style="display: block;" matStepLabel>{{site}}</ng-template>
+               
+            </mat-step> 
+          
+        </mat-stepper>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel #openClose (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false"
+                             (click)="DisplayTripDetail()">
+          <mat-expansion-panel-header>
+
+            <mat-panel-description>
+              פרטי האתרים
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div  class="details">
+            <div class="sitesDetails" *ngFor="let s of site">
+               <div class="bold">שם האתר:</div> <span class="notBold">{{s.NameSite}}</span>
+               <div class="bold">סוג:</div><span class="notBold">{{s.NameSiteKind}}</span>
+                <div class="bold">כתובת:</div><span class="notBold">{{s.Adress}}</span>
+                <div class="bold">אזור:</div><span class="notBold">{{s.NameRegion}}</span>
+                <div class="bold">תת אזור:</div><span class="notBold">{{s.NameSub_Region}}</span>
+                <div class="bold">רמת אתגר:</div><span class="notBold">{{s.ExtraLevel}}</span>
+                <div class="bold"> גיל מינימלי:</div><span class="notBold">{{s.MinAge}}</span>
+                <div class="bold"> גיל מקסימלי:</div><span class="notBold">{{s.MaxAge}}</span>
+                <div class="bold">  חינם/לא בחינם:</div><span class="notBold">{{s.Free_notFree}}</span>
+            </div>
+            </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    <div class="row">
+
+        <div class="col-sm-3"><button *ngIf="idCus!=-1"  [disabled]="favoriteEnable" (click)="AddFavorite()"mat-button style="text-align: end;" ><mat-icon color="warn">favorite_border</mat-icon>&nbsp;לתגובה שלך לטיול זה</button></div>
+        <div class="col-sm-9"></div>
+
+    </div>
+</div>

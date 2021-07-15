@@ -15,7 +15,7 @@
                     <p *ngFor="let reminder of reminders" class="field">
                         <mat-form-field appearance="outline">
                             <!-- <mat-label>Outline form field</mat-label> -->
-                            <input matInput (keyup.enter)="onEnter($event)" [value]="reminder.remi">
+                            <input matInput (keydown.enter)="onEnter($event,reminder)" [value]="reminder.describe">
                             <mat-icon color="primary" matPrefix>thumb_up</mat-icon>
                             <mat-hint class="hint">נכתב בתאריך: {{reminder.date}}</mat-hint>
                         </mat-form-field>
@@ -24,14 +24,14 @@
 
                         <mat-form-field appearance="outline">
                             <!-- <mat-label>הכנס תזכורת חדשה</mat-label> -->
-                            <input matInput placeholder="הכנס תזכורת חדשה" (keyup.enter)="onEnter($event)">
+                            <input matInput  (keydown.enter)="onEnterNew($event)" placeholder="הכנס תזכורת חדשה" >
                             <mat-icon color="primary" matPrefix>thumb_up</mat-icon>
                         </mat-form-field>
                     </p>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-2">
-                            <button mat-icon-button matTooltip="לחץ כדי להסיר את התזכורת האחרונה" (click)="daleteReminder()">
+                            <button mat-icon-button matTooltip="לחץ כדי להסיר את התזכורת האחרונה" (click)="deleteReminder()">
                             <mat-icon color="primary">remove</mat-icon>
                       </button>
 
@@ -48,7 +48,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-4"></div>
-                    <div class="col-sm-4 field"> <button mat-flat-button color="primary">  &nbsp; &nbsp; שמור &nbsp; &nbsp;  </button>
+                    <div class="col-sm-4 field"> <button (click)="save()" mat-flat-button color="primary">  &nbsp; &nbsp; שמור &nbsp; &nbsp;  </button>
                     </div>
                     <div class="col-sm-4"></div>
 

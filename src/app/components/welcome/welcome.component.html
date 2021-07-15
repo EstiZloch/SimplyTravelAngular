@@ -37,7 +37,7 @@
 
             <div style="display: flex;flex-direction: column;">
                 <div style="flex: 3;">
-                    <button mat-button class="buttonCard">
+                    <button mat-button class="buttonCard" (click)="history()">
                           <mat-icon class="icon">saved_search</mat-icon>
                           <br>
                           <h1 style="color: white;">הסטורית טיולים</h1></button>
@@ -50,14 +50,14 @@
                           </h1></button>
                 </div> -->
                 <div style="flex: 3;">
-                    <button mat-stroked-button class="buttonCard">
+                    <button mat-stroked-button class="buttonCard" (click)="responses()">
                           <mat-icon class="icon">thumb_up</mat-icon>
                           <br>
                           <h1 style="color: white;">רשמים ותגובות</h1>
                         </button>
                 </div>
                 <div style="flex: 3;">
-                    <button mat-stroked-button class="buttonCard">
+                    <button mat-stroked-button class="buttonCard" (click)="notes()">
                           <mat-icon class="icon" >hotel_class</mat-icon>
                           <br>
                           <h1 style="color: white;">שלא נשכח!</h1></button>

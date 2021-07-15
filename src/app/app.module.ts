@@ -49,6 +49,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { AllSitesComponent } from './components/all-sites/all-sites.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { TripsComponent } from './components/trips/trips.component';
+import { TripsReviewComponent } from './components/trips-review/trips-review.component';
+import { TripsResponsesComponent } from './components/trips-responses/trips-responses.component';
 
 @NgModule({
   
@@ -92,6 +95,9 @@ BrowserAnimationsModule,
     AllSitesComponent,
     HeaderComponent,
 AlertComponent,
+TripsComponent,
+TripsReviewComponent,
+TripsResponsesComponent,
 
   ],
   entryComponents: [

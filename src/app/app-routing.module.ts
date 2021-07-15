@@ -8,17 +8,20 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { InputMapComponent } from './components/input-map/input-map.component';
 import { LoginComponent } from './components/login/login.component';
 import { Plan1Component } from './components/plan1/plan1.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { RateComponent } from './components/rate/rate.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
+import { ResponsesComponent } from './components/responses/responses.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { StartPageComponent } from './components/start-page/start-page.component';
 import { TripsHistoryComponent } from './components/trips-history/trips-history.component';
+import { TripsResponsesComponent } from './components/trips-responses/trips-responses.component';
+import { TripsComponent } from './components/trips/trips.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'plan1',component:Plan1Component},
-
+  { path: 'notes', component: ReminderComponent },
   { path: 'Welcome', component: WelcomeComponent },
   { path: 'AllSite', component: AllSitesComponent },
   { path: 'details', component: CustomerDetailsComponent },
@@ -29,7 +32,10 @@ const routes: Routes = [
     {path:'map',component:InputMapComponent},
     {path:'tripsHistory',component:TripsHistoryComponent},
     {path:'allSites',component:AllSitesComponent},
-
+    {path:'history',component:TripsHistoryComponent},
+    {path:'responses',component:ResponsesComponent},
+    {path:'tripResponses',component:TripsResponsesComponent},
+    {path:'trips',component:TripsComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

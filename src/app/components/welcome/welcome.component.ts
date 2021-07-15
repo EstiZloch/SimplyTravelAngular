@@ -61,4 +61,16 @@ export class WelcomeComponent implements OnInit {
        this.result.SetCurr(2);
       this.router.navigate(['plan1']);
      }
+     history()
+     {
+      this.router.navigate(['trips']);
+     }
+     notes()
+     {
+      this.router.navigate(['notes']);
+     }
+     responses()
+     {
+      this.router.navigate(['tripResponses']);
+     }
 }

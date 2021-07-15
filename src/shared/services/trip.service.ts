@@ -18,6 +18,12 @@ export class TripService {
   headers.append("Access-Control-Allow-Origin", "*")
   return this.http.post<number>(`${this.url}addTrip`,trip);
   }
+  GetTrips(id:number):Observable<string[][]> {
+    return this.http.get<string[][]>(`${this.url}getTrips/${id}`)
+  }                   
+  GetTripsDetails(id:number):Observable<string[][]> {
+    return this.http.get<string[][]>(`${this.url}getDetailTrip/${id}`)
+  }
 
 
 }

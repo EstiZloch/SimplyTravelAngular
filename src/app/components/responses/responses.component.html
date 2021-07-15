@@ -16,17 +16,7 @@
                     <div class="col-sm-7" style="border-right: 1px solid rgb(102, 190, 146);">
                         <app-rate *ngIf="tripName" [tripName]="tripName"></app-rate>
                     </div>
-                    <div class="col-sm-5 ">
-                        <div class="row  margin" *ngFor="let response of responses">
-                            <div class="col-sm-3 field" style="text-align: end">
-                                <mat-icon class="arrow" *ngIf="tripName==response">west</mat-icon>
-                            </div>
-                            <div class="col-sm-8 field"> <button mat-raised-button (click)="onClick(response)">{{response}}</button></div>
-                            <div class="col-sm-1 field"> </div>
 
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </mat-card>

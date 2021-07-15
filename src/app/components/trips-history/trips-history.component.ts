@@ -20,6 +20,7 @@ export class TripsHistoryComponent implements OnInit {
   ngOnInit(): void {
   }
   onClick(res:any,value:any) { 
+   
     this.result.SetCurr(4)
     this.result.SetNumber(value);
      this.tripName=res; 

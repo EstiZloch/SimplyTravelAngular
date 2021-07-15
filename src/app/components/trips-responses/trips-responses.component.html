@@ -1,0 +1,32 @@
+
+<div class="container-fluid back">
+    <div class="row mainRow">
+        <mat-card style="width: 80% ;">
+            <form novalidate #frm="ngForm">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h1 style=" text-align: start;">תגובות</h1>
+<h2>לחץ על שם טיול כדי לצפות בתגובות לאתרי טיול זה</h2>
+                        <mat-divider></mat-divider>
+
+                    </div> <br>
+
+
+
+                    <p *ngFor="let trip of trips" class="field">
+                        <mat-form-field appearance="outline">
+                            <!-- <mat-label>Outline form field</mat-label> -->
+                            <input [disabled]="disableFalse" (click)="tripReview(trip[0])" matInput [value]="trip[1]">
+                            <mat-icon color="primary" matPrefix>thumb_up</mat-icon>
+                            <mat-hint class="hint">נכתב בתאריך: {{trip[2]}}</mat-hint>
+                        </mat-form-field>
+                    </p>
+ 
+
+                </div>
+
+
+            </form>
+        </mat-card>
+    </div>
+</div>
