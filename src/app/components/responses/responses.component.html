@@ -13,10 +13,19 @@
                 </div>
                 <br>
                 <div class="row">
+     
                     <div class="col-sm-7" style="border-right: 1px solid rgb(102, 190, 146);">
-                        <app-rate *ngIf="tripName" [tripName]="tripName"></app-rate>
+                        <app-rate *ngIf="siteName" [siteName]="siteName"></app-rate>
                     </div>
-
+                    <div class="col-sm-4" style="border-left: 1px solid rgb(102, 190, 146)">
+                        <div class="row  margin" *ngFor="let response of responses; let i = index">
+                            <div class="col-sm-3 field" style="text-align: end">
+                                <mat-icon class="arrow" *ngIf="siteName==response">west</mat-icon>
+                            </div>
+                            <div class="col-sm-8 field"> <button style="margin-right: -45px;" mat-raised-button (click)="onClick(response,i)">{{response}}</button></div>
+                            <div class="col-sm-1 field"> </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </mat-card>

@@ -52,17 +52,10 @@ public changePanelOpenState()
 }
 AddFavorite()
 { 
-  this.responses.GetResponses(Number(this.result.GetTrips()[this.index][0])).subscribe(
-    s=>{
-      if(s==null)
-      this.show=!this.show
-else
-{
+
   this.result.SetCodeTrip(Number(this.result.GetTrips()[this.index][0]));
-  this.router.navigate(['tripResponses']);
-}
-    }
-  )
+  this.router.navigate(['responses']);
+
  
 }
 

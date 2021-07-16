@@ -2,9 +2,14 @@
     <div class="row mainRow">
         <mat-card style="width: 80% ;">
             <div class="container-fluid"> -->
-
+                <div *ngIf="show" #alert class="alert alert-success" role="alert">
+                    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Great!!!</strong>   התגובה נשמרה במערכת בהצלחה! 
+                  </div>
                 <div class="row">
-                    <h1 style=" text-align: center;">הכנס את תגובתך לטיול: {{tripName}}</h1>
+                    <h1 style=" text-align: center;">הכנס את תגובתך לאתר: {{siteName}}</h1>
                 
                     <mat-divider></mat-divider>
                 
@@ -12,7 +17,7 @@
                 <div class="row">
                     <br>
                     <h2> &nbsp;האם הציוד שהבאת השביע את רצונך? &nbsp;</h2>
-                    <ngb-rating [(rate)]="currentRate1" [max]="max">
+                    <ngb-rating  [(ngModel)]="rates[index].Question1" [(rate)]="rates[index].Question1!" [max]="max">
                         <ng-template let-fill="fill" let-index="index">
                             <span class="star" [class.filled]="fill === 100">&#9733;</span>
                         </ng-template>
@@ -20,7 +25,7 @@
                     <hr>
                     <!-- <pre>Rate: <b>{{currentRate1}}</b></pre> -->
                     <h2> &nbsp;האם המזג אויר התאים לטיול? &nbsp;</h2>
-                    <ngb-rating [(rate)]="currentRate2" [max]="max">
+                    <ngb-rating  [(ngModel)]="rates[index].Question2" [(rate)]="rates[index].Question2!" [max]="max">
                         <ng-template let-fill="fill" let-index="index">
                             <span class="star" [class.filled]="fill === 100">&#9733;</span>
                         </ng-template>
@@ -28,7 +33,7 @@
                     <hr>
                     <!-- <pre>Rate: <b>{{currentRate2}}</b></pre> -->
                     <h2> &nbsp;האם הטיול התאים לכל שכבות הגיל? &nbsp;</h2>
-                    <ngb-rating [(rate)]="currentRate3" [max]="max">
+                    <ngb-rating  [(ngModel)]="rates[index].Question3" [(rate)]="rates[index].Question3!" [max]="max">
                         <ng-template let-fill="fill" let-index="index">
                             <span class="star" [class.filled]="fill === 100">&#9733;</span>
                         </ng-template>
@@ -36,17 +41,24 @@
                     <hr>
                     <!-- <pre>Rate: <b>{{currentRate3}}</b></pre> -->
                     <h2>האם תרצה לשוב על טיול זה שנית?</h2>
-                    <mat-button-toggle-group>
-                        <mat-button-toggle value="1">כן</mat-button-toggle>
-                        <mat-button-toggle value="0">לא</mat-button-toggle>
+                    <mat-button-toggle-group  [(ngModel)]="answer">
+                        <mat-button-toggle #toggleButton >כן</mat-button-toggle>
+                        <mat-button-toggle #toggleButton1 >לא</mat-button-toggle>
                     </mat-button-toggle-group>
                     <hr>
                     <h2>רשמים נוספים:</h2>
                     <div>
                         <mat-form-field appearance="outline" style="width:90%;">
-                            <textarea matInput></textarea>
+                            <textarea [(ngModel)]="rates[index].Notes" matInput></textarea>
                         </mat-form-field>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-2"> <button style="width: 100%;" mat-flat-button color="primary" (click)="save()" >שמור</button>
+                
+                    <div class="col-sm-5"></div>
+      
                 </div>
                 <!-- </div>
                         </mat-card>

@@ -25,7 +25,7 @@ export class AddSiteComponent implements OnInit {
   buttonText="הוסף"
   check1:boolean
   check2:boolean
-  extraLevel:number=0
+  extraLevel:number=1
   newSite:Site=new Site();
     options={
       componentRestrictions:{
@@ -66,7 +66,6 @@ this.newSite=siteDetails
     if (value >= 1) {
       return lavels[(value-1)]
     }
-
     return 'בחר רמה';
     
   }
@@ -83,7 +82,7 @@ this.newSite.ExtraLevel=value;
      this.newSite.StatusSite=true;
 
   }
-  AddSite(){
+  AddSite(frm:any){
     if(this.car_bus=="1")
     this.newSite.Car_bus=true;
     else    
@@ -156,7 +155,7 @@ this.newSite.Car_bus=false;
   {
 this.newSite.CodeSub_Region=Number(value);
   } 
-  UpdateSite()
+  UpdateSite(frm:any)
     {
       this.siteService.UpdateSite(this.newSite).subscribe(nameSite=>{});
       this.router.navigate(['AllSite']);

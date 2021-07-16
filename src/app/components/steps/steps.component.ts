@@ -26,7 +26,6 @@ currentStep: Observable<StepModel>;
     this.service.getSteps().subscribe( (stepsTemp) => {
     stepsTemp[1];
     this.steps = stepsTemp;
-    console.log(this.steps)
    });
    this.currentStep = this.service.getCurrentStep();
    this.currentStep.pipe(map(p=>this.current=p.stepIndex))

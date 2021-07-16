@@ -1,4 +1,4 @@
-export class Response
+export class Responses
 {
     CodeResponse?:number
     CodeSiteInTrip?:number

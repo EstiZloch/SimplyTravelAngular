@@ -1,3 +1,4 @@
+<form  novalidate #frm="ngForm">
 <div class="container-fluid back">
   <div class="row mainRow">
       <mat-card style="width: 80% ;">
@@ -10,10 +11,27 @@
               </div> <br>
               <div class="row">
                   <div style="max-width: 30%;" class="col-sm-6">
+                    <div *ngIf="show" #alert class="alert alert-success" role="alert">
+                        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Great!!!</strong>   האתר נשמר בהצלחה! 
+                      </div>
+                      <div *ngIf="show" #alert class="alert alert-success" role="alert">
+                        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>Great!!!</strong>   קיים אתר בעל שם זה ו! 
+                      </div>
+
+
+
+                    
                       <div class="box">
                           <mat-label>כתובת אתר</mat-label>
-                          <input [(ngModel)]="newSite.Adress" ngx-google-places-autocomplete =
+                          <input name="address" [(ngModel)]="newSite.Adress" ngx-google-places-autocomplete =
                           'options'  (onAddressChange)="AddressChange($event)"/>
+                        
                       </div>
                       <div class="box">
                           <label>רמת אתגר</label>
@@ -39,34 +57,37 @@
                     <div class="field">
                       <mat-form-field appearance="outline">
                           <mat-label>גיל מינימלי</mat-label>
-                          <input matInput [(ngModel)]="newSite.MinAge" name="minAge">
+                          <input  ngbTooltip="גיל מינימלי חייב להיות מספר"  triggers="click:blur"  #minAge="ngModel"  matInput [(ngModel)]="newSite.MinAge" name="minAge"  required  minlength="0" maxlength="120"  matInput>
                           <mat-icon matSuffix>child_care </mat-icon>
-  
                       </mat-form-field>
+                      <span class="error font"  *ngIf="minAge.errors!=null && minAge.errors.required && minAge.touched">שדה חובה</span>
                   </div>
                   <div class="field">
                       <mat-form-field appearance="outline">
                           <mat-label>גיל מקסימלי</mat-label>
-                          <input matInput [(ngModel)]="newSite.MaxAge" name="maxAge">
+                          <input  ngbTooltip="גיל מקסימלי חייב להיות מספר"  triggers="click:blur"  #max="ngModel"   matInput [(ngModel)]="newSite.MaxAge"   required  minlength="0" maxlength="120"  name="maxAge">
                           <mat-icon matSuffix>elderly </mat-icon>
   
                       </mat-form-field>
+                      <span class="error font"  *ngIf="max.errors!=null && max.errors.required && max.touched">שדה חובה</span>
                   </div>
                   <div class="field">
                       <mat-form-field appearance="outline">
                           <mat-label>ליטר מים לנפש</mat-label>
-                          <input matInput [(ngModel)]="newSite.MisLiterWater"  name="MisLiter">
+                          <input   ngbTooltip="מספר ליטרים חייב להיות מספר"  triggers="click:blur"  #liter="ngModel"   matInput [(ngModel)]="newSite.MisLiterWater"   required  minlength="1" maxlength="10"  name="MisLiter">
                           <mat-icon matSuffix>wine_bar </mat-icon>
   
                       </mat-form-field>
+                      <span class="error font"  *ngIf="liter.errors!=null && liter.errors.required && liter.touched">שדה חובה</span>
                   </div>
                   <div class="field">
                       <mat-form-field appearance="outline">
                           <mat-label>מספר שעות לבילוי</mat-label>
-                          <input matInput [(ngModel)]="newSite.TimeSpend" name="avgSpendTime">
+                          <input  ngbTooltip="מספר שעות לא יכול להיות יותר מיממה"  triggers="click:blur"  #mis="ngModel"   matInput [(ngModel)]="newSite.TimeSpend"   required  minlength="0.5" maxlength="24"  name="avgSpendTime">
                           <mat-icon matSuffix>access_time </mat-icon>
   
                       </mat-form-field>
+                      <span class="error font"  *ngIf="mis.errors!=null && mis.errors.required && mis.touched">שדה חובה</span>
                   </div>
               </div>
                   <div style="max-width: 30%;" class="col-sm-6">
@@ -93,10 +114,11 @@
                       <div class="field">
                           <mat-form-field appearance="outline">
                               <mat-label>שם אתר</mat-label>
-                              <input matInput [(ngModel)]="newSite.NameSite" name="name">
+                              <input  ngbTooltip="שם חייב להכיל 3 תווים לפחות"  triggers="click:blur"  #nameSite="ngModel"   matInput [(ngModel)]="newSite.NameSite"   required  minlength="3"  name="nameSite">
                               <mat-icon matSuffix>deck </mat-icon>
 
                           </mat-form-field>
+                          <span class="error font"  *ngIf="nameSite.errors!=null && nameSite.errors.required && nameSite.touched">שדה חובה</span>
                       </div>
                       <div class="field">
                           <mat-form-field appearance="outline">
@@ -126,8 +148,8 @@
           </div>
           <div class="row">
               <div class="col-sm-5"></div>
-              <div class="col-sm-2"> <button *ngIf="buttonText=='הוסף'" style="width: 100%;" mat-flat-button color="primary" (click)="AddSite()" >הוסף</button>
-             <button *ngIf="buttonText=='עדכן'" style="width: 100%;" mat-flat-button color="primary" (click)="UpdateSite()" >עדכן</button></div>
+              <div class="col-sm-2"> <button   type="submit" [disabled]="!frm.valid" *ngIf="buttonText=='הוסף'" style="width: 100%;" mat-flat-button color="primary" (click)="AddSite(frm)" >הוסף</button>
+             <button *ngIf="buttonText=='עדכן'"   type="submit" [disabled]="!frm.valid" style="width: 100%;" mat-flat-button color="primary" (click)="UpdateSite(frm)" >עדכן</button></div>
               <div class="col-sm-5"></div>
 
           </div>
@@ -157,4 +179,4 @@
       </mat-card>
   </div>
 </div>
-  
+  </form>

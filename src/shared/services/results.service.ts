@@ -1,21 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Responses } from '../models/Responses.model';
 import { Site } from '../models/Site.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResultsService {
+sitesInTrip:Responses[]=[]
 tripsResult:string[][]
 sitesResult:string[][]
 sitesResult1:string[][]
 currentNumberTrip:number
 currentNumberTrip1:number
-idCustomer:number=-1
+currentNumberTrip2:number
+idCustomer:number
 codeSite:number=-1
 curr:number=1
 codeTrip:number
   constructor() { }
+  SetSitesInTrip(trips:Responses[]):void
+  {
+    this.sitesInTrip=trips;
+    console.log(this.sitesInTrip);
+  }
+  GetSitesInTrip():Responses[]
+  {
+    return this.sitesInTrip;
+  }
   SetTrips(trips:string[][]):void
   {
     this.tripsResult=trips;
@@ -48,6 +60,15 @@ codeTrip:number
   {
 
     return this.currentNumberTrip1;
+  }
+  SetNumber2(value:number)
+  {
+    this.currentNumberTrip2=value
+  }
+  GetNumber2():number
+  {
+
+    return this.currentNumberTrip2;
   }
   SetNumber(value:number)
   {

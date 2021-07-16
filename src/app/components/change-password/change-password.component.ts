@@ -19,7 +19,7 @@ isCorrect:boolean=false
   ngOnInit(): void {
 
   }
-Save()
+Save(frm:any)
 {
 this.customerService.CheckPassword(this.newCustomer).subscribe
 (

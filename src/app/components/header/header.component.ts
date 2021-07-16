@@ -20,6 +20,8 @@ this.result.SetId(-1);
   }
   HomePage()
   {
+    this.result.SetCurr(1)
     this.router.navigate(['Welcome']);
+
   }
 }
