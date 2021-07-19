@@ -63,6 +63,7 @@ this.newCustomer.PasswordCustomer=this.newPassword
     result=>{
     console.log('hi')
     });
+    this.result.SetStart(true)
     this.router.navigate(['/Welcome']);
   }
 

@@ -14,11 +14,20 @@ sitesResult1:string[][]
 currentNumberTrip:number
 currentNumberTrip1:number
 currentNumberTrip2:number
-idCustomer:number
+idCustomer:number=-1
 codeSite:number=-1
 curr:number=1
 codeTrip:number
+start:boolean=false
   constructor() { }
+  SetStart(trips:boolean):void
+  {
+    this.start=trips;
+  }
+  GetStart():boolean
+  {
+    return this.start;
+  }
   SetSitesInTrip(trips:Responses[]):void
   {
     this.sitesInTrip=trips;

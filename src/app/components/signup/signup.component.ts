@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
      if(customerId!=0)
       {
         this.result.SetId(customerId);
+        this.result.SetStart(true)
         this.router.navigate(['/Welcome']);
       }
      else 

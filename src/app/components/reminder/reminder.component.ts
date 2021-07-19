@@ -13,6 +13,7 @@ import { ResultsService } from 'src/shared/services/results.service';
 export class ReminderComponent implements OnInit {
   currentRate = 0;
   max:number=5;
+  codeEvent:number
   // reminders:any=[{remi:"לא לשכוח כובעי שמש ",date:"12/12/2021"},
   // {remi:'בטיולים בדרום להגדיל משמעותית את כמות המים',date:"12/01/2021"}];
   reminders:ReminderDisplay[]=[]
@@ -42,35 +43,28 @@ reminderDisplay:ReminderDisplay=new ReminderDisplay();
  onEnter(event:any,reminder:ReminderDisplay) {
 
 debugger;
-console.log(reminder.CodeRemainder)
+
 this.reminders.forEach(element => {
   if(element.CodeRemainder==reminder.CodeRemainder)
   element.describe=event.target.value;
-  console.log(this.reminders)
+  this.codeEvent=event.keyCode
 });
+
  }
  onEnterNew(event:any) {
    
-  debugger;
+ 
 
-    // if(!this.firstTime)
-    // this.reminders.forEach(element => {
-    //   if(element.CodeRemainder==this.reminders[this.i].CodeRemainder)
-    // element.describe=event.target.value;
-    // });
-    // else
-    // {
+
       this.reminderDisplay=new ReminderDisplay();
       this.reminderDisplay.CodeRemainder=this.i++
       this.reminderDisplay.describe=event.target.value;
       this.reminderDisplay.date = this.datePipe.transform(this.myDate, 'yyyy-MM-dd')!;
       this.reminders.push(this.reminderDisplay)
-    //   this.firstTime=false
-    // }
-  
 
 
-  console.log(this.reminders)
+
+
    }
   newReminder(){
     debugger;
@@ -79,10 +73,17 @@ this.reminders.forEach(element => {
     this.reminderDisplay.describe="הכנס תזכורת חדשה"
     this.reminderDisplay.date = this.datePipe.transform(this.myDate, 'yyyy-MM-dd')!;
     this.reminders.push(this.reminderDisplay)
-    console.log(this.reminders)
+
   }
-  deleteReminder(){
-    this.reminders.splice(-1,1)
+  deleteReminder(event:any){
+    if(this.codeEvent == 13)
+    {
+      this.codeEvent=0
+        return false; 
+    }
+      this.reminders.splice(-1,1)
+  return true
+ 
 
   }
   save()

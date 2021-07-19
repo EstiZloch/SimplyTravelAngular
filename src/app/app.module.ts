@@ -52,6 +52,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { TripsComponent } from './components/trips/trips.component';
 import { TripsReviewComponent } from './components/trips-review/trips-review.component';
 import { TripsResponsesComponent } from './components/trips-responses/trips-responses.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @NgModule({
   
@@ -70,7 +71,7 @@ BrowserAnimationsModule,
     MatTabsModule,
     ChartsModule,
     GooglePlaceModule,
-
+    GoogleMapsModule
   ],
   declarations: [
     AppComponent,

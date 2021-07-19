@@ -37,6 +37,7 @@ export class SigninComponent implements OnInit {
         {
           this.result.SetId(userId);
           console.log(this.result.GetId())
+          this.result.SetStart(true)
           this.router.navigate(['/Welcome']);
         }
         else

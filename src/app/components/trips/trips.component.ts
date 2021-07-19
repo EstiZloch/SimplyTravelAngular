@@ -31,7 +31,7 @@ export class TripsComponent implements OnInit {
     });
   }
   onClick(res:any,value:any) { 
-
+console.log(value)
     this.result.SetNumber1(value);
      this.tripName=res; 
     this.modelRefList.forEach(element => {
